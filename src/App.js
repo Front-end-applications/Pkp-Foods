@@ -12,24 +12,24 @@ import WhatsappContainer from './containers/WhatsappLinkContainer'
 
 function App () {
     return (
-    //   <>
-    //     <HeaderContainer />
-    //     <JumbotronContainer />
-    //     <NavBarContainer />
-    //     <CollectionsCardContainer />
-    //     <QualityStatementsContainer />
-    //     <WhatsappContainer />
-    //     <FooterContainer />
-    //   </>
+      <>
+        <HeaderContainer />
+        <JumbotronContainer />
+        <NavBarContainer />
+        <CollectionsCardContainer />
+        <QualityStatementsContainer />
+        <WhatsappContainer />
+        <FooterContainer />
+      </>
 
-        <>
-            <HeaderContainer />
-            <JumbotronContainer />
-            <NavBarContainer />
-            <ProductCardContainer />
-            <WhatsappContainer />
-            <FooterContainer />
-        </>
+        // <>
+        //     <HeaderContainer />
+        //     <JumbotronContainer />
+        //     <NavBarContainer />
+        //     <ProductCardContainer />
+        //     <WhatsappContainer />
+        //     <FooterContainer />
+        // </>
     )
 }
 
