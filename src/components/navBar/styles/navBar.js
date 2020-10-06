@@ -1,14 +1,14 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   background: #000000;
-`
+`;
 
 export const Inner = styled.div`
   width: 70%;
   margin: auto;
   padding: 0.7rem;
-`
+`;
 
 export const Link = styled.a`
   font-size: 12px;
@@ -17,4 +17,4 @@ export const Link = styled.a`
   text-transform: uppercase;
   margin-left: 1rem;
   margin-right: 1rem;
-`
+`;

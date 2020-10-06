@@ -3,11 +3,11 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
 `
-
+/* 1f0000, 080236 */
 export const Banner = styled.div`
   height: calc(1.9rem + 14px);
   background: #000000;
-`
+`;
 
 export const Inner = styled.div`
   float: right;

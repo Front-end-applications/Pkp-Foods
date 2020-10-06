@@ -20,8 +20,8 @@ ProductCard.Price = function ProductCardPrice ({ children, ...restProps }) {
     return <Price {...restProps}>{children}</Price>
 }
 
-ProductCard.Image = function ProductCardImage ({ children, ...restProps }) {
-    return <Image {...restProps}>{children}</Image>
+ProductCard.Image = function ProductCardImage ({ ...restProps }) {
+    return <Image {...restProps} />
 }
 
 ProductCard.ProductInformation = function ProductCardTitle ({ children, ...restProps }) {

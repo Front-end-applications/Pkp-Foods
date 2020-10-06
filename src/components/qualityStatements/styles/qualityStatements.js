@@ -8,14 +8,12 @@ export const Container = styled.div`
 export const Row = styled.div`
     display: flex;
     align-items: center;
-    background: #cccccc;
     border-radius: 1rem;
     margin: 2rem 0;
 `
 
 export const Column = styled.div`
     flex: 1;
-    padding: 3rem;
 `
 
 export const Title = styled.h3`
