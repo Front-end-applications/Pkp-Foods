@@ -7,9 +7,9 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
-  padding: 0.5rem;
+  margin-bottom: 1.5rem;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr;
@@ -23,16 +23,10 @@ export const Row = styled.div`
 export const Title = styled.h2``
 
 export const Card = styled.div`
-  height: 23rem;
+  height: 15rem;
   border: 1px solid #000000;
   border-radius: 0.5rem;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0)
-    ),
-    url(${(props) => props.img});
+  background-image: url(${(props) => props.img});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   overflow: hidden;
@@ -41,21 +35,21 @@ export const Card = styled.div`
   :hover {
     cursor: pointer;
   }
-`
+`;
 
 export const CardInformation = styled.div`
-  padding: 1rem;
   position: absolute;
-  bottom: 0;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
 `
 
 export const CardTitle = styled.h3`
+  margin: 0 0.5rem;
+  background-color: #ac1830;
+  border: 1px solid white;
   font-size: 12px;
   color: white;
   text-transform: uppercase;
-`
-
-export const Description = styled.p`
-  color: white;
-  font-size: 12px;
-`
+  padding: 0.4rem 0;
+`;

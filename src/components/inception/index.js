@@ -4,6 +4,7 @@ import {
   Title,
   Text,
   Description,
+  Button
 } from "./styles/inception";
 
 export default function Inception({ children, ...restProps }) {
@@ -24,3 +25,7 @@ Inception.Description = function InceptionDescription({
 }) {
   return <Description {...restProps}>{children}</Description>;
 };
+
+Inception.Button = function InceptionButton({ children, ...restProps }) {
+  return <Button {...restProps}>{children}</Button>;
+}

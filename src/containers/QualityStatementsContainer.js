@@ -6,7 +6,7 @@ export default function QualityStatementsContainer() {
     <QualityStatements>
       <QualityStatements.Row>
         <QualityStatements.Column>
-          <QualityStatements.Image src="/images/products/Sweets.jpg" />
+          <QualityStatements.Image src="/images/home/quality_statement/Quality_Image.jpg" />
         </QualityStatements.Column>
         <QualityStatements.Column>
           <QualityStatements.Title>Quality Statement</QualityStatements.Title>

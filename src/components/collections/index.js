@@ -5,8 +5,7 @@ import {
     Title,
     Card,
     CardInformation,
-    CardTitle,
-    Description
+    CardTitle
 } from './styles/collections'
 
 export default function Collections ({ children, ...restProps }) {
@@ -35,7 +34,6 @@ Collections.Card = function CollectionsCard ({ ...restProps }) {
         <Card {...restProps}>
             <CardInformation>
                 <CardTitle>{restProps.title}</CardTitle>
-                <Description>{restProps.desc}</Description>
             </CardInformation>
         </Card>
     )

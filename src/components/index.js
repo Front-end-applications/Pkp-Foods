@@ -1,6 +1,7 @@
 export { default as Header } from './header'
 export { default as Jumbotron } from './jumbotron'
 export { default as NavBar } from './navBar'
+export { default as Ticker } from "./ticker";
 export { default as Collections } from './collections'
 export { default as Carousel } from "./carousel";
 export { default as QualityStatements } from './qualityStatements'

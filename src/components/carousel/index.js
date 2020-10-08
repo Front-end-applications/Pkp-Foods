@@ -4,6 +4,7 @@ import {
   Container,
   Inner,
   Slide,
+  Image,
   Text,
   Title,
   Description,
@@ -56,4 +57,8 @@ Carousel.PaginationDots = function CarouselPaginationDots({children ,...restProp
 
 Carousel.Dot = function CarouselDot({ ...restProps }) {
   return <Dot active={restProps.active} onClick={restProps.onClick} />;
+}
+
+Carousel.Image = function CarouselImage({...restProps}) {
+  return <Image {...restProps} />
 }

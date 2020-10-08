@@ -13,7 +13,9 @@ export default function QualityStatementsContainer() {
           reasons for deteriorating Health &amp; increasing lifestyle diseases
           such as diabetes &amp; hypertension.
         </Inception.Description>
+        <Inception.Button>About Us</Inception.Button>
       </Inception.Text>
+      <div style={{ clear: "both" }}></div>
     </Inception>
   );
 }

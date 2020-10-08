@@ -21,7 +21,8 @@ export const Title = styled.h3`
 `
 
 export const Description = styled.p`
-    text-align: left;
+
+    text-align: justify;
     line-height: 1.5;
 `
 

@@ -22,10 +22,6 @@ export const Inner = styled.div`
 
 export const Slide = styled.div`
   position: relative;
-  background-image: url(${(props) => props.img});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
   min-width: 100%;
   flex: 1;
 
@@ -33,6 +29,10 @@ export const Slide = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Image = styled.img`
+  width:100%;
+`
 
 export const Text = styled.div`
   color: white;
@@ -63,6 +63,7 @@ export const PaginationDots = styled.div`
 export const Dot = styled.div`
   padding: 4px;
   border-radius: 50%;
+  border: 1px solid black;
   margin-right: 8px;
   cursor: pointer;
   background: ${(props) => props.active ? "black" : "white"};
