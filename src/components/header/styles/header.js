@@ -1,7 +1,9 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
+  font-family: san-serif;
+  font-size; 0.8em;
 `;
 /* #1f0000, #080236, #1873eb, #3a5794, #3c5a9a */
 export const Banner = styled.div`
@@ -26,7 +28,7 @@ export const Image = styled.img`
   padding: 0.5rem;
   position: absolute;
   top: 0;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   width: 5rem;
   height: auto;
 `;
@@ -36,5 +38,5 @@ export const Link = styled.a`
   margin: 0.5rem;
   color: white;
   text-decoration: none;
-  text-transform: uppercase;
+  outline: none;
 `;

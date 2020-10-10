@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 70%;
@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-size: 100% 100%;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-size: 0.8rem;
 `;
 
 export const Text = styled.div`
