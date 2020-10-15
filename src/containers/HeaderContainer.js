@@ -2,6 +2,7 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 import { Header } from "../components";
+import * as ROUTES from '../constants/routes'
 
 export default function HeaderContainer({ children }) {
   return (
@@ -19,7 +20,7 @@ export default function HeaderContainer({ children }) {
           </Header.Select>
         </Header.Inner>
       </Header.Banner>
-      <Header.Image src="/images/logo/pkp logo new png1.png" />
+      <Header.Image to={ROUTES.HOME} src="/images/logo/pkp logo new png1.png" />
       {children}
     </Header>
   );

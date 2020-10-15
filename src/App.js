@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "normalize.css";
 
-import {Home, AboutUs, Products, ContactUs, Blog } from './pages'
-import * as ROUTES from './constants/routes'
+import { Home, AboutUs, Products, ContactUs, Blog } from "./pages";
+import * as ROUTES from "./constants/routes";
+import AuthenticationContainer from "./containers/AuthenticationContainer";
 
 function App() {
   return (

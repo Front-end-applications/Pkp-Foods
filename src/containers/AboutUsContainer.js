@@ -56,7 +56,7 @@ export default function AboutUsContainer() {
           materiels
         </AboutUs.ListItem>
         <AboutUs.ListItem>
-          No added artificial preservatives & chemicals
+          No added artificial preservatives &amp; chemicals
         </AboutUs.ListItem>
         <AboutUs.ListItem>Zero artificial colours % Flavours</AboutUs.ListItem>
       </AboutUs.List>

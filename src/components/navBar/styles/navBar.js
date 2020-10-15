@@ -20,4 +20,5 @@ export const Link = styled(ReactRouterLink)`
   color: white;
   margin-left: 1rem;
   margin-right: 1rem;
+  outline: none;
 `;

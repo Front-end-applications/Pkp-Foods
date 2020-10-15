@@ -9,11 +9,11 @@ export const Container = styled.div`
   :hover {
     cursor: pointer;
   }
-`
+`;
 
 export const Image = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: auto;
 `
 
 export const ProductInformation = styled.div``
