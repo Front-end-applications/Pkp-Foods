@@ -1,13 +1,12 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-  padding: 3rem;
+  width: 70%;
   margin: auto;
   text-align: justify;
 `;
 
-export const Inner = styled.div`
-`;
+export const Inner = styled.div``;
 
 export const Title = styled.h1``;
 
