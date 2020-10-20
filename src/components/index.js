@@ -4,6 +4,9 @@ export { default as AuthenticationForm } from "./authenticationForm";
 export { default as Whatsapp } from "./whatsapp";
 export { default as Footer } from "./footer";
 
+export { default as Modal } from "./modal";
+export { default as PinCodeModal } from "./pinCodeModal";
+
 export { default as Jumbotron } from "./jumbotron";
 export { default as Ticker } from "./ticker";
 export { default as Collections } from "./collections";

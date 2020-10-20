@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
-  font-family: san-serif;
+  font-family: "Quicksand", sans-serif;
   font-size; 0.8em;
 `;
 /* #1f0000, #080236, #1873eb, #3a5794, #3c5a9a */
@@ -39,4 +39,5 @@ export const Link = styled.a`
   color: white;
   text-decoration: none;
   outline: none;
+  cursor: pointer;
 `;

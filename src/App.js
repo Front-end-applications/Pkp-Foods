@@ -4,7 +4,6 @@ import "normalize.css";
 
 import { Home, AboutUs, Products, ContactUs, Blog } from "./pages";
 import * as ROUTES from "./constants/routes";
-import AuthenticationContainer from "./containers/AuthenticationContainer";
 
 function App() {
   return (
