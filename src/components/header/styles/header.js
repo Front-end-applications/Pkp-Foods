@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   font-family: "Quicksand", sans-serif;
   font-size; 0.8em;
+  background: ${(props) => props.background}
 `;
 /* #1f0000, #080236, #1873eb, #3a5794, #3c5a9a */
 export const Banner = styled.div`
@@ -40,4 +41,18 @@ export const Link = styled.a`
   text-decoration: none;
   outline: none;
   cursor: pointer;
+`;
+
+export const Pincode = styled.div`
+  display: block;
+  width: 100%;
+  overflow: auto;
+
+  & a {
+    display: flex;
+    align-items: center;
+    margin-right: 4rem;
+    float: right;
+    color: black;
+  }
 `;

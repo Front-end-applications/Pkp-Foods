@@ -5,18 +5,14 @@ import { Header } from "../components";
 import PincodeModalContainer from "./PincodeModalContainer";
 import * as ROUTES from "../constants/routes";
 
-export default function HeaderContainer({ children }) {
-  const [showPinCode, setShowPinCode] = useState(true);
+export default function HeaderContainer({ children, ...restProps }) {
+  const [showPinCode, setShowPinCode] = useState(false);
 
   return (
     <>
-      <Header>
+      <Header {...restProps}>
         <Header.Banner>
           <Header.Inner>
-            <Header.Link onClick={() => setShowPinCode(true)}>
-              <FaMapMarkerAlt />
-              &nbsp;Pincode
-            </Header.Link>
             <Header.Link href="#">
               <FaShoppingCart />
               &nbsp;Cart
@@ -28,16 +24,26 @@ export default function HeaderContainer({ children }) {
             </Header.Select>
           </Header.Inner>
         </Header.Banner>
+
         <Header.Image
           to={ROUTES.HOME}
           src="/images/logo/pkp logo new png1.png"
         />
 
+        <Header.Pincode>
+          <Header.Link onClick={() => setShowPinCode(true)}>
+            <FaMapMarkerAlt size={24} />
+            <span>
+              Hello
+              <br />
+              <b>Enter your location</b>
+            </span>
+          </Header.Link>
+        </Header.Pincode>
         <PincodeModalContainer
           show={showPinCode}
           closeModal={() => setShowPinCode(false)}
         />
-
         {children}
       </Header>
     </>

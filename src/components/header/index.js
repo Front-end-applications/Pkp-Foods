@@ -8,6 +8,7 @@ import {
   Select,
   Option,
   Link,
+  Pincode,
 } from "./styles/header";
 
 export default function Header({ children, ...restProps }) {
@@ -40,4 +41,8 @@ Header.Image = function HeaderImage({ to, ...restProps }) {
       <Image {...restProps} />
     </ReactRouterLink>
   );
+};
+
+Header.Pincode = function HeaderPincode({ children, ...restProps }) {
+  return <Pincode {...restProps}>{children}</Pincode>;
 };

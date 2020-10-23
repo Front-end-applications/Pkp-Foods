@@ -17,7 +17,7 @@ export default function Home() {
       <HeaderContainer>
         <JumbotronContainer />
         <TickerContainer />
-        <NavBarContainer />
+        <NavBarContainer background="black"/>
         <CarouselContainer />
         <CollectionsCardContainer />
         <QualityStatementsContainer />
