@@ -11,15 +11,20 @@ import InceptionContainer from "../containers/InceptionContainer";
 import WhatsappContainer from "../containers/WhatsappLinkContainer";
 import FooterContainer from "../containers/FooterContainer";
 
+const viewCategories = ["Card Title", "Card Title 2"];
+
 export default function Home() {
   return (
     <>
       <HeaderContainer>
         <JumbotronContainer />
         <TickerContainer />
-        <NavBarContainer background="black"/>
+        <NavBarContainer background="black" />
         <CarouselContainer />
-        <CollectionsCardContainer />
+        <CollectionsCardContainer
+          title="Discover our collections"
+          viewCategories={viewCategories}
+        />
         <QualityStatementsContainer />
         <InceptionContainer />
         <WhatsappContainer />

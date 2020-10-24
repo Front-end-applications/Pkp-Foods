@@ -10,10 +10,8 @@ import FooterContainer from "../containers/FooterContainer";
 export default function Home() {
   return (
     <>
-      <HeaderContainer>
-        <JumbotronContainer />
-        <TickerContainer />
-        <NavBarContainer />
+      <HeaderContainer background="#EAEDED">
+        <NavBarContainer background="transparent" color="black" />
         <div>Welcome to blog page!</div>
         <WhatsappContainer />
         <FooterContainer />

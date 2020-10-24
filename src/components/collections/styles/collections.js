@@ -1,9 +1,15 @@
-import styled from 'styled-components/macro'
+import styled from "styled-components/macro";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
+  background: white;
+`;
+
+export const Inner = styled.div`
   width: 70%;
-  margin: 2rem auto;
-`
+  margin: 0 auto;
+  padding: 1rem 0 0;
+`;
 
 export const Row = styled.div`
   display: grid;
@@ -18,11 +24,11 @@ export const Row = styled.div`
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }
-`
+`;
 
-export const Title = styled.h2``
+export const Title = styled.h2``;
 
-export const Card = styled.div`
+export const Card = styled(ReactRouterLink)`
   height: 15rem;
   border: 1px solid #000000;
   border-radius: 0.5rem;
@@ -42,7 +48,7 @@ export const CardInformation = styled.div`
   bottom: 12px;
   width: 100%;
   text-align: center;
-`
+`;
 
 export const CardTitle = styled.h3`
   margin: 0 0.5rem;
