@@ -10,11 +10,13 @@ export const Inner = styled.div`
   width: 90%;
 `;
 
-export const Header = styled.div``;
+export const Header = styled.div`
+  text-align: center;
+`;
 
 export const Title = styled.h2`
-margin: 0;
-padding: 2rem 0 0;
+  margin: 0;
+  padding: 2rem 0 0;
 `;
 
 export const Desc = styled.p``;

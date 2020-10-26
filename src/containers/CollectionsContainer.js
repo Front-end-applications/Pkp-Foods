@@ -1,6 +1,5 @@
 import React from "react";
 
-import * as ROUTES from "../constants/routes";
 import { Collections } from "../components";
 
 const categories = [
@@ -50,7 +49,7 @@ export default function CollectionsCardContainer({ ...restProps }) {
             )
             .map((category, index) => (
               <Collections.Card
-                to={ROUTES.PRODUCTS}
+                to={`/collections/${category.title}`}
                 key={index}
                 img={category.img}
                 title={category.title}

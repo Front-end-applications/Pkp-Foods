@@ -5,8 +5,20 @@ import { Products, ProductCard, Filter } from "../components";
 
 const products = [
   {
-    title: "kaju Pak",
-    image: "",
+    title: "abc",
+    image: "/images/products/Sweets.jpg",
+    cost_per_kg: 1520,
+    weights: [500, 1000],
+    category: "Traditional South Indian",
+    desc:
+      "An enchanting troika of premium quality whole cashew nuts, jaggery and ghee",
+    expiry: 3,
+    gluten_free: true,
+    vegan: true,
+  },
+  {
+    title: "def",
+    image: "/images/products/Sweets.jpg",
     cost_per_kg: 1520,
     weights: [250, 500, 1000],
     category: "Traditional South Indian",
@@ -15,8 +27,8 @@ const products = [
     vegan: true,
   },
   {
-    title: "kaju Pak",
-    image: "",
+    title: "ghi",
+    image: "/images/products/Sweets.jpg",
     cost_per_kg: 1520,
     weights: [250, 500, 1000],
     category: "Traditional South Indian",
@@ -25,8 +37,18 @@ const products = [
     vegan: true,
   },
   {
-    title: "kaju Pak",
-    image: "",
+    title: "jkl",
+    image: "/images/products/Sweets.jpg",
+    cost_per_kg: 1520,
+    weights: [250, 500, 1000],
+    category: "Traditional South Indian",
+    expiry: 3,
+    gluten_free: true,
+    vegan: true,
+  },
+  {
+    title: "mno",
+    image: "/images/products/Sweets.jpg",
     cost_per_kg: 1520,
     weights: [250, 500, 1000],
     category: "Traditional South Indian",
@@ -43,7 +65,7 @@ export default function ProductsContainer() {
         <Products.Title>Product page title</Products.Title>
         <Products.Desc>Product page description</Products.Desc>
       </Products.Header>
-      
+
       <Products.Body>
         <Products.FilterContainer>
           <Filter>
@@ -85,8 +107,14 @@ export default function ProductsContainer() {
           </Products.Sort>
           <Products.ProductsCardContainer>
             {products.map((product, index) => (
-              <ProductCard key={index}>
-                <ProductCard.Image src="/images/products/Sweets.jpg" />
+              <ProductCard
+                key={index}
+                to={{
+                  pathname: `/products/${index}`,
+                  state: product,
+                }}
+              >
+                <ProductCard.Image src={product.image} />
                 <ProductCard.ProductInformation>
                   <ProductCard.Title>{product.title}</ProductCard.Title>
                   <ProductCard.Price>

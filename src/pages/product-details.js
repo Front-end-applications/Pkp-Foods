@@ -2,15 +2,16 @@ import React from "react";
 
 import HeaderContainer from "../containers/HeaderContainer";
 import NavBarContainer from "../containers/NavBarContainer";
+import ProductDetailsContainer from "../containers/ProductDetailContainer";
 import WhatsappContainer from "../containers/WhatsappLinkContainer";
 import FooterContainer from "../containers/FooterContainer";
 
-export default function Home() {
+export default function ProductDetails({ ...restProps }) {
   return (
     <>
       <HeaderContainer background="#EAEDED">
         <NavBarContainer background="transparent" color="black" />
-        <div>Welcome to blog page!</div>
+        <ProductDetailsContainer state={restProps.location.state} />
         <WhatsappContainer />
         <FooterContainer />
       </HeaderContainer>

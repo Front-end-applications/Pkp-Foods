@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const Inner = styled.div`
   width: 70%;
   margin: 0 auto;
-  padding: 1rem 0 0;
+  padding: 1rem 0;
 `;
 
 export const Row = styled.div`
