@@ -21,3 +21,7 @@ export { default as Filter } from "./filter";
 export { default as ProductCard } from "./productCard";
 
 export { default as ProductDetails } from "./productDetails";
+
+export { default as ShoppingCart } from "./shoppingCart";
+export { default as Checkout } from "./checkout";
+export { default as Payment } from "./payment";

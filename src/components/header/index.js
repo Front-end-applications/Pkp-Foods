@@ -8,6 +8,7 @@ import {
   Select,
   Option,
   Link,
+  ReactLink,
   Pincode,
 } from "./styles/header";
 
@@ -33,6 +34,10 @@ Header.Option = function HeaderOption({ children, ...restProps }) {
 
 Header.Link = function HeaderLink({ children, ...restProps }) {
   return <Link {...restProps}>{children}</Link>;
+};
+
+Header.ReactLink = function HeaderReactLink({ children, ...restProps }) {
+  return <ReactLink {...restProps}>{children}</ReactLink>;
 };
 
 Header.Image = function HeaderImage({ to, ...restProps }) {

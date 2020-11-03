@@ -94,9 +94,8 @@ export default function ProductsContainer() {
         <Products.MainContentContainer>
           <Products.Sort>
             <Products.Select>
-              <Products.Option>Position</Products.Option>
-              <Products.Option>Price</Products.Option>
               <Products.Option>Product Name</Products.Option>
+              <Products.Option>Price</Products.Option>
               <Products.Option>New</Products.Option>
               <Products.Option>Most Viewed</Products.Option>
               <Products.Option>Best Sellers</Products.Option>

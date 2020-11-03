@@ -1,4 +1,6 @@
 import React from "react";
+import * as ROUTES from "../constants/routes";
+import { FaBorderNone } from "react-icons/fa";
 import { ProductDetails } from "../components";
 
 export default function ProductDetailContainer({ ...restProps }) {
@@ -7,6 +9,12 @@ export default function ProductDetailContainer({ ...restProps }) {
     <ProductDetails>
       <ProductDetails.Image src={restProps.state.image} />
       <ProductDetails.Details>
+        {/*<div style={{ position: "absolute", width: "30%", height: "75%", overflow: "hidden" }}>
+          <ProductDetails.Image
+            src={restProps.state.image}
+            style={{ margin: "0px", width: "400%" }}
+          />
+        </div> */}
         <ProductDetails.Title>{restProps.state.title}</ProductDetails.Title>
         <ProductDetails.Price>
           {"₹"}
@@ -71,7 +79,9 @@ export default function ProductDetailContainer({ ...restProps }) {
           Add to cart
         </ProductDetails.Button>
         <ProductDetails.Button background="#08174c">
-          Buy now
+          <ProductDetails.ReactLink to={ROUTES.SHOPPING_CART}>
+            Buy now
+          </ProductDetails.ReactLink>
         </ProductDetails.Button>
       </ProductDetails.Details>
     </ProductDetails>

@@ -13,10 +13,10 @@ export default function HeaderContainer({ children, ...restProps }) {
       <Header {...restProps}>
         <Header.Banner>
           <Header.Inner>
-            <Header.Link href="#">
+            <Header.ReactLink to={ROUTES.SHOPPING_CART}>
               <FaShoppingCart />
               &nbsp;Cart
-            </Header.Link>
+            </Header.ReactLink>
             <Header.Link>Login</Header.Link>
             <Header.Link>Sign up</Header.Link>
             <Header.Select>

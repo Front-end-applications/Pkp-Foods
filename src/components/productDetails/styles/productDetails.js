@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link as ReactRouterLink } from "react-router-dom";
 export const Container = styled.div`
   box-sizing: border-box;
   background: white;
@@ -161,6 +161,11 @@ export const Button = styled.button`
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
+`;
+
+export const ReactLink = styled(ReactRouterLink)`
+  text-decoration: none;
+  color: #fff;
 `;
 
 export const HorizontalRule = styled.hr`

@@ -1,4 +1,5 @@
 import React from "react";
+import { ProductCard } from "..";
 
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   Price,
   Availablity,
   Button,
+  ReactLink,
   WeightsGroup,
   Weights,
   Quantity,
@@ -87,6 +89,10 @@ ProductDetails.PinCodeButton = ({ children, ...restProps }) => {
 
 ProductDetails.Button = ({ children, ...restProps }) => {
   return <Button {...restProps}>{children}</Button>;
+};
+
+ProductDetails.ReactLink = ({ children, ...restProps }) => {
+  return <ReactLink {...restProps}>{children}</ReactLink>;
 };
 
 ProductDetails.HorizontalRule = ({ children, ...restProps }) => {

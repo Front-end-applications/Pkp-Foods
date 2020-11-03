@@ -10,7 +10,11 @@ import {
   ContactUs,
   Blog,
   ProductDetails,
+  ShoppingCart,
+  Checkout,
+  Payment,
 } from "./pages";
+
 import * as ROUTES from "./constants/routes";
 
 function App() {
@@ -24,6 +28,10 @@ function App() {
         <Route exact path={ROUTES.BLOG} component={Blog} />
         <Route exact path={ROUTES.COLLECTION_CATEGORY} component={Products} />
         <Route exact path={ROUTES.PRODUCTS} component={ProductDetails} />
+        <Route exact path={ROUTES.SHOPPING_CART} component={ShoppingCart} />
+        <Route exact path={ROUTES.CHECKOUT} component={Checkout} />
+        <Route exact path={ROUTES.PAYMENT} component={Payment} />
+        PaymentContainer
       </Router>
     </>
   );

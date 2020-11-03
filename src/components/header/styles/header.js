@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -10,6 +11,7 @@ export const Container = styled.div`
 export const Banner = styled.div`
   height: calc(1.9rem + 14px);
   background: #000000;
+  position:
 `;
 
 export const Inner = styled.div`
@@ -35,6 +37,15 @@ export const Image = styled.img`
 `;
 
 export const Link = styled.a`
+  font-size: 12px;
+  margin: 0.5rem;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+`;
+
+export const ReactLink = styled(ReactRouterLink)`
   font-size: 12px;
   margin: 0.5rem;
   color: white;
