@@ -8,13 +8,11 @@ import FooterContainer from "../containers/FooterContainer";
 
 export default function Home() {
   return (
-    <>
-      <HeaderContainer background="#EAEDED">
-        <NavBarContainer background="transparent" color="black" />
-        <AboutUsContainer />
-        <WhatsappContainer />
-        <FooterContainer />
-      </HeaderContainer>
-    </>
+    <HeaderContainer background="#EAEDED">
+      <NavBarContainer background="transparent" color="black" />
+      <AboutUsContainer />
+      <WhatsappContainer />
+      <FooterContainer />
+    </HeaderContainer>
   );
 }

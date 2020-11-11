@@ -86,11 +86,11 @@ export const SectionBody = styled.div`
   color: #333;
 `;
 
-export const SectionLabel = styled.p`
+export const SectionLabel = styled.div`
   margin: 0.5rem 0;
 `;
 
-export const SectionValue = styled.p`
+export const SectionValue = styled.div`
   margin: 0.5rem 0;
   text-align: right;
 `;
@@ -116,6 +116,7 @@ export const Button = styled.button`
   border-radius: 4px;
   box-shadow: none;
   border: 1px solid #ccc;
+  padding: 0;
 `;
 
 export const ButtonsRow = styled.div`
@@ -123,15 +124,21 @@ export const ButtonsRow = styled.div`
 `;
 
 export const ReactLink = styled(ReactRouterLink)`
+  display: block;
   text-decoration: none;
-  color: #fff;
+  color: ${(props) => props.color};
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Select = styled.select``;
 
 export const Options = styled.option``;
 
-export const Quantity = styled.input.attrs({ type: "number" })`
+export const Quantity = styled.input.attrs({ type: "number", min: "1" })`
   width: 27px;
   font-family: "Quicksand", sans-serif;
   padding: 0.3rem;

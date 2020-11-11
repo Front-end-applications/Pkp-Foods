@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as ROUTES from "../constants/routes";
-import { FaBorderNone } from "react-icons/fa";
 import { ProductDetails } from "../components";
+import { CartContext } from "../context/shoppingCart";
 
 export default function ProductDetailContainer({ ...restProps }) {
-  console.log(restProps);
+  const [cart, setCart] = useContext(CartContext);
+
+  function handleOnClick() {
+    console.log("In here!");
+    setCart((curCart) => [...curCart, restProps.state]);
+  }
+
   return (
     <ProductDetails>
       <ProductDetails.Image src={restProps.state.image} />
@@ -25,7 +31,10 @@ export default function ProductDetailContainer({ ...restProps }) {
           }
         </ProductDetails.Price>
         <ProductDetails.Expiry>
-          Fresh For: {restProps.expiry}
+          Fresh For:{" "}
+          {restProps.state.expiry +
+            " " +
+            (restProps.state.expiry > 1 ? "days" : "day")}
         </ProductDetails.Expiry>
 
         <ProductDetails.Availablity>
@@ -45,19 +54,21 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <div>
           Quantity
-          <ProductDetails.Quantity min={1} />
+          <ProductDetails.QuantityGroup>
+            <ProductDetails.QtyBtn>-</ProductDetails.QtyBtn>
+            <ProductDetails.Quantity />
+            <ProductDetails.QtyBtn>+</ProductDetails.QtyBtn>
+          </ProductDetails.QuantityGroup>
         </div>
 
         <ProductDetails.HorizontalRule />
 
-        <ProductDetails.Desc>
-          {restProps.state.desc && (
-            <>
-              {restProps.state.desc}
-              <ProductDetails.HorizontalRule />
-            </>
-          )}
-        </ProductDetails.Desc>
+        {restProps.state.desc && (
+          <>
+            <ProductDetails.Desc>{restProps.state.desc}</ProductDetails.Desc>
+            <ProductDetails.HorizontalRule />
+          </>
+        )}
 
         <ProductDetails.Desc>
           Pick Up features is available at Hyderabad Stores. <br />
@@ -75,11 +86,14 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <ProductDetails.HorizontalRule />
 
-        <ProductDetails.Button background="#a72c41">
+        <ProductDetails.Button onClick={handleOnClick} background="#a72c41">
           Add to cart
         </ProductDetails.Button>
         <ProductDetails.Button background="#08174c">
-          <ProductDetails.ReactLink to={ROUTES.SHOPPING_CART}>
+          <ProductDetails.ReactLink
+            onClick={handleOnClick}
+            to={ROUTES.SHOPPING_CART}
+          >
             Buy now
           </ProductDetails.ReactLink>
         </ProductDetails.Button>

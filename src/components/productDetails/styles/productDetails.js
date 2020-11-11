@@ -106,17 +106,46 @@ export const Weights = styled.input.attrs({
   margin: 0 0 0 1rem;
 `;
 
+export const QuantityGroup = styled.div`
+  justify-content: center;
+  margin: 0;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  line-height: 1;
+  white-space: nowrap;
+  font-size: 14px;
+`;
+
 export const Quantity = styled.input.attrs({
   type: "number",
 })`
-  width: 48px;
-  height: 27px;
+  width: 27px;
+  font-family: "Quicksand", sans-serif;
+  padding: 0.3rem;
   color: #1e1e1e;
   font-size: 14px;
   border: solid 1px #c8c8c8;
-  margin: 0 1rem;
+  margin: 0 2px;
   letter-spacing: 0.3px;
   font-weight: normal;
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+`;
+
+export const QtyBtn = styled.button`
+  width: 27px;
+  font-family: "Quicksand", sans-serif;
+  padding: 0.3rem 0;
+  color: #8b0f2e;
+  font-size: 14px;
+  border: solid 1px #c8c8c8;
+  margin: 0 2px;
+  font-weight: bold;
+  background: #fff;
 `;
 
 export const Desc = styled.p``;
@@ -161,11 +190,19 @@ export const Button = styled.button`
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
+  cursor: pointer;
 `;
 
 export const ReactLink = styled(ReactRouterLink)`
   text-decoration: none;
   color: #fff;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const HorizontalRule = styled.hr`

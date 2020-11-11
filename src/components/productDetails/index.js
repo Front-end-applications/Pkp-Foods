@@ -14,7 +14,9 @@ import {
   ReactLink,
   WeightsGroup,
   Weights,
+  QuantityGroup,
   Quantity,
+  QtyBtn,
   Desc,
   HorizontalRule,
   PinCode,
@@ -67,8 +69,16 @@ ProductDetails.Weights = ({ ...restProps }) => {
   );
 };
 
+ProductDetails.QuantityGroup = ({ children, ...restProps }) => {
+  return <QuantityGroup {...restProps}>{children}</QuantityGroup>;
+};
+
 ProductDetails.Quantity = ({ ...restProps }) => {
   return <Quantity {...restProps} />;
+};
+
+ProductDetails.QtyBtn = ({ children, ...restProps }) => {
+  return <QtyBtn {...restProps}>{children}</QtyBtn>;
 };
 
 ProductDetails.Desc = ({ children, ...restProps }) => {

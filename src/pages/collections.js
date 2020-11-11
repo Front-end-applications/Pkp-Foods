@@ -9,14 +9,12 @@ import FooterContainer from "../containers/FooterContainer";
 
 export default function Collections() {
   return (
-    <>
-      <HeaderContainer background="#EAEDED">
-        <NavBarContainer background="transparent" color="black" />
-        <CollectionsContainer />
-        <BestSellersContainer />
-        <WhatsappContainer />
-        <FooterContainer />
-      </HeaderContainer>
-    </>
+    <HeaderContainer background="#EAEDED">
+      <NavBarContainer background="transparent" color="black" />
+      <CollectionsContainer />
+      <BestSellersContainer />
+      <WhatsappContainer />
+      <FooterContainer />
+    </HeaderContainer>
   );
 }

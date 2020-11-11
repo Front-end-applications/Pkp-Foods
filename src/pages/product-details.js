@@ -8,13 +8,11 @@ import FooterContainer from "../containers/FooterContainer";
 
 export default function ProductDetails({ ...restProps }) {
   return (
-    <>
-      <HeaderContainer background="#EAEDED">
-        <NavBarContainer background="transparent" color="black" />
-        <ProductDetailsContainer state={restProps.location.state} />
-        <WhatsappContainer />
-        <FooterContainer />
-      </HeaderContainer>
-    </>
+    <HeaderContainer background="#EAEDED">
+      <NavBarContainer background="transparent" color="black" />
+      <ProductDetailsContainer state={restProps.location.state} />
+      <WhatsappContainer />
+      <FooterContainer />
+    </HeaderContainer>
   );
 }

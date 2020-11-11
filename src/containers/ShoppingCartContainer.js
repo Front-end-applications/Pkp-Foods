@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
 import { ShoppingCart } from "../components";
 
 import * as ROUTES from "../constants/routes";
+import { CartContext } from "../context/shoppingCart";
 
 export default function ShoppingCartContainer() {
+  const [cart] = useContext(CartContext);
+
+  console.log(cart);
+
   return (
     <ShoppingCart>
       <ShoppingCart.Title>Shopping Cart</ShoppingCart.Title>
@@ -18,39 +23,52 @@ export default function ShoppingCartContainer() {
             <ShoppingCart.TableHeader>Total</ShoppingCart.TableHeader>
           </ShoppingCart.TableRow>
 
-          <ShoppingCart.TableRow>
-            <ShoppingCart.TableData>
-              <ShoppingCart.ItemImage src="/images/products/Sweets.jpg" />
-              <ShoppingCart.ItemDetails>
-                <ShoppingCart.ItemTitle>Kaju Pak</ShoppingCart.ItemTitle>
-                <ShoppingCart.ItemWeight>
-                  Weight: 250 gms{" "}
-                </ShoppingCart.ItemWeight>
-                <div>
-                  <ShoppingCart.ItemButton>
-                    <FaPencilAlt />
-                  </ShoppingCart.ItemButton>
-                  <ShoppingCart.ItemButton>
-                    <FaTrash />
-                  </ShoppingCart.ItemButton>
-                </div>
-              </ShoppingCart.ItemDetails>
-            </ShoppingCart.TableData>
-            <ShoppingCart.TableData>₹380.00</ShoppingCart.TableData>
-            <ShoppingCart.TableData>
-              <ShoppingCart.QtyBtn>-</ShoppingCart.QtyBtn>
-              <ShoppingCart.Quantity></ShoppingCart.Quantity>
-              <ShoppingCart.QtyBtn>+</ShoppingCart.QtyBtn>
-            </ShoppingCart.TableData>
-            <ShoppingCart.TableData style={{ fontWeight: "bold" }}>
-              ₹760.00
-            </ShoppingCart.TableData>
-          </ShoppingCart.TableRow>
+          {cart.map((product, index) => (
+            <ShoppingCart.TableRow key={index}>
+              <ShoppingCart.TableData>
+                <ShoppingCart.ItemImage src={product.image} />
+                <ShoppingCart.ItemDetails>
+                  <ShoppingCart.ItemTitle to={""}>
+                    {product.title}
+                  </ShoppingCart.ItemTitle>
+                  <ShoppingCart.ItemWeight>
+                    Weight: {product.weights[0]} gms
+                  </ShoppingCart.ItemWeight>
+                  <div>
+                    <ShoppingCart.ItemButton>
+                      <FaPencilAlt />
+                    </ShoppingCart.ItemButton>
+                    <ShoppingCart.ItemButton>
+                      <FaTrash />
+                    </ShoppingCart.ItemButton>
+                  </div>
+                </ShoppingCart.ItemDetails>
+              </ShoppingCart.TableData>
+              <ShoppingCart.TableData>
+                ₹{(product.cost_per_kg * product.weights[0]) / 1000}
+              </ShoppingCart.TableData>
+              <ShoppingCart.TableData>
+                <ShoppingCart.QtyBtn>-</ShoppingCart.QtyBtn>
+                <ShoppingCart.Quantity></ShoppingCart.Quantity>
+                <ShoppingCart.QtyBtn>+</ShoppingCart.QtyBtn>
+              </ShoppingCart.TableData>
+              <ShoppingCart.TableData style={{ fontWeight: "bold" }}>
+                ₹{(product.cost_per_kg * product.weights[0]) / 1000}
+              </ShoppingCart.TableData>
+            </ShoppingCart.TableRow>
+          ))}
 
           <ShoppingCart.ButtonsRow>
-            <ShoppingCart.Button>Continue Shopping</ShoppingCart.Button>
+            <ShoppingCart.Button>
+              <ShoppingCart.ReactLink
+                color="#555555"
+                to={ROUTES.COLLECTION_CATEGORY}
+              >
+                Continue Shopping
+              </ShoppingCart.ReactLink>
+            </ShoppingCart.Button>
             <ShoppingCart.Button background="#a52a3e">
-              <ShoppingCart.ReactLink to={ROUTES.CHECKOUT}>
+              <ShoppingCart.ReactLink color="#ffffff" to={ROUTES.CHECKOUT}>
                 Proceed to checkout
               </ShoppingCart.ReactLink>
             </ShoppingCart.Button>
