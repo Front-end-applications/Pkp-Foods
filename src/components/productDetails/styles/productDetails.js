@@ -107,15 +107,17 @@ export const Weights = styled.input.attrs({
 `;
 
 export const QuantityGroup = styled.div`
-  justify-content: center;
   margin: 0;
-  padding: 0.5rem;
   display: flex;
   align-items: center;
   font-style: normal;
   line-height: 1;
   white-space: nowrap;
   font-size: 14px;
+
+  & div {
+    margin: 0 0.5rem;
+  }
 `;
 
 export const Quantity = styled.input.attrs({

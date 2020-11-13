@@ -7,9 +7,18 @@ import * as ROUTES from "../constants/routes";
 import { CartContext } from "../context/shoppingCart";
 
 export default function ShoppingCartContainer() {
-  const [cart] = useContext(CartContext);
+  const [cart, setCart] = useContext(CartContext);
 
   console.log(cart);
+
+  function handleDelete(index) {
+    console.log("Deleted!");
+    setCart((currCart) => {
+      let newCart = [...currCart];
+      newCart.splice(index, 1);
+      return newCart;
+    });
+  }
 
   return (
     <ShoppingCart>
@@ -38,7 +47,9 @@ export default function ShoppingCartContainer() {
                     <ShoppingCart.ItemButton>
                       <FaPencilAlt />
                     </ShoppingCart.ItemButton>
-                    <ShoppingCart.ItemButton>
+                    <ShoppingCart.ItemButton
+                      onClick={(event) => handleDelete(index)}
+                    >
                       <FaTrash />
                     </ShoppingCart.ItemButton>
                   </div>

@@ -52,14 +52,14 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <ProductDetails.HorizontalRule />
 
-        <div>
-          Quantity
-          <ProductDetails.QuantityGroup>
+        <ProductDetails.QuantityGroup>
+          <p>Quantity</p>
+          <div>
             <ProductDetails.QtyBtn>-</ProductDetails.QtyBtn>
             <ProductDetails.Quantity />
             <ProductDetails.QtyBtn>+</ProductDetails.QtyBtn>
-          </ProductDetails.QuantityGroup>
-        </div>
+          </div>
+        </ProductDetails.QuantityGroup>
 
         <ProductDetails.HorizontalRule />
 
