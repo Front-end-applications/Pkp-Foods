@@ -1,8 +1,7 @@
 import React from "react";
 
-import { Payment } from "../components";
-
-import * as ROUTES from "../constants/routes";
+import { Payment } from "../../components";
+import * as ROUTES from "../../constants/routes";
 
 export default function PaymentContainer() {
   return (

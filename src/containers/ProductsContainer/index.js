@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
-import { Products, ProductCard, Filter } from "../components";
+import { Products, ProductCard, Filter } from "../../components";
 
 const products = [
   {

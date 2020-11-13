@@ -1,24 +1,13 @@
 import React, { useContext } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
-import { ShoppingCart } from "../components";
-
-import * as ROUTES from "../constants/routes";
-import { CartContext } from "../context/shoppingCart";
+import { ShoppingCart } from "../../components";
+import { CartContext } from "../../context/shoppingCart";
+import * as ROUTES from "../../constants/routes";
+import * as SERVICES from "./ShoppingCartContainerService";
 
 export default function ShoppingCartContainer() {
   const [cart, setCart] = useContext(CartContext);
-
-  console.log(cart);
-
-  function handleDelete(index) {
-    console.log("Deleted!");
-    setCart((currCart) => {
-      let newCart = [...currCart];
-      newCart.splice(index, 1);
-      return newCart;
-    });
-  }
 
   return (
     <ShoppingCart>
@@ -48,7 +37,7 @@ export default function ShoppingCartContainer() {
                       <FaPencilAlt />
                     </ShoppingCart.ItemButton>
                     <ShoppingCart.ItemButton
-                      onClick={(event) => handleDelete(index)}
+                      onClick={(event) => SERVICES.handleDelete(index, setCart)}
                     >
                       <FaTrash />
                     </ShoppingCart.ItemButton>
@@ -78,6 +67,7 @@ export default function ShoppingCartContainer() {
                 Continue Shopping
               </ShoppingCart.ReactLink>
             </ShoppingCart.Button>
+
             <ShoppingCart.Button background="#a52a3e">
               <ShoppingCart.ReactLink color="#ffffff" to={ROUTES.CHECKOUT}>
                 Proceed to checkout

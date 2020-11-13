@@ -1,10 +1,12 @@
 import React from "react";
 
-import HeaderContainer from "../containers/HeaderContainer";
-import NavBarContainer from "../containers/NavBarContainer";
-import WhatsappContainer from "../containers/WhatsappLinkContainer";
-import FooterContainer from "../containers/FooterContainer";
-import ShoppingCartContainer from "../containers/ShoppingCartContainer";
+import {
+  HeaderContainer,
+  NavBarContainer,
+  WhatsappContainer,
+  FooterContainer,
+  ShoppingCartContainer,
+} from "../containers";
 
 export default function ShoppingCart({ ...restProps }) {
   return (

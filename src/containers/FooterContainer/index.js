@@ -14,7 +14,7 @@ import {
   FaCcStripe,
 } from "react-icons/fa";
 
-import { Footer } from "../components";
+import { Footer } from "../../components";
 
 export default function FooterContainer() {
   return (

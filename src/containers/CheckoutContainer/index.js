@@ -1,8 +1,7 @@
 import React from "react";
 
-import { Checkout } from "../components";
-
-import * as ROUTES from "../constants/routes";
+import { Checkout } from "../../components";
+import * as ROUTES from "../../constants/routes";
 
 export default function CheckoutContainer() {
   return (

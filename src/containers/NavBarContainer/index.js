@@ -1,7 +1,7 @@
 import React from "react";
-import { NavBar } from "../components";
 
-import * as ROUTES from "../constants/routes";
+import { NavBar } from "../../components";
+import * as ROUTES from "../../constants/routes";
 
 export default function NavBarContainer({ ...restProps }) {
   return (

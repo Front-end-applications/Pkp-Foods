@@ -16,6 +16,7 @@ export { default as Inception } from "./inception";
 
 export { default as AboutUs } from "./aboutUs";
 
+export { default as BestSellers } from "./bestSellers";
 export { default as Products } from "./products";
 export { default as Filter } from "./filter";
 export { default as ProductCard } from "./productCard";

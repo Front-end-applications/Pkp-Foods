@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGooglePlus } from "react-icons/fa";
 
-import { AuthenticationForm } from "../components";
+import { AuthenticationForm } from "../../components";
 
 export default function AuthenticationContainer() {
   return (

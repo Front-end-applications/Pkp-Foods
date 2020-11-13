@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Jumbotron } from "../components";
+import { Jumbotron } from "../../components";
 
 export default function JumbotronContainer() {
   return (

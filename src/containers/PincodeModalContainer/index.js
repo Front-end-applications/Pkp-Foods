@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React from "react";
 
-import { Modal, PinCodeModal } from "../components";
+import { Modal, PinCodeModal } from "../../components";
 
 export default function ModalContainer({ children, ...restProps }) {
   return (

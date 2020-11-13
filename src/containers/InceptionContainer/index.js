@@ -1,5 +1,6 @@
 import React from "react";
-import { Inception } from "../components";
+
+import { Inception } from "../../components";
 
 export default function QualityStatementsContainer() {
   return (

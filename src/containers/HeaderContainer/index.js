@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaShoppingCart, FaMapMarkerAlt } from "react-icons/fa";
 
-import { Header } from "../components";
-import PincodeModalContainer from "./PincodeModalContainer";
-import * as ROUTES from "../constants/routes";
+import { Header } from "../../components";
+import PincodeModalContainer from "../PincodeModalContainer";
+import * as ROUTES from "../../constants/routes";
 
 export default function HeaderContainer({ children, ...restProps }) {
   const [showPinCode, setShowPinCode] = useState(false);

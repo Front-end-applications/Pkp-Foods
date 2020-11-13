@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Carousel } from "../components";
+
+import { Carousel } from "../../components";
 
 const slides = [
   {
@@ -19,11 +20,10 @@ const slides = [
     description:
       "The PKP started at RTC X Roads, after a family took a step forward to present Traditional Healthy Snacks as best alternative to counter Junk Food in the market, as the high consumption of JF is one of the reasons for deteriorating Health &amp; increasing lifestyle diseases such as diabetes & hypertension.",
     image: "/images/home/carousel/Picture2.png",
-  }
+  },
 ];
 
 export default function CarouselContainer() {
-
   const getWidth = () => window.innerWidth;
 
   const [state, setState] = useState({
@@ -38,15 +38,15 @@ export default function CarouselContainer() {
 
   useEffect(() => {
     autoPlayRef.current = nextSlide;
-  })
-  
+  });
+
   useEffect(() => {
     function play() {
-      autoPlayRef.current()
+      autoPlayRef.current();
     }
 
-    const interval = setInterval(play, 5000)
-    return () => clearInterval(interval)
+    const interval = setInterval(play, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   function handleClick(index) {
@@ -57,7 +57,7 @@ export default function CarouselContainer() {
   }
 
   function nextSlide() {
-    if(activeIndex === slides.length-1) {
+    if (activeIndex === slides.length - 1) {
       setState({
         activeIndex: 0,
         translate: 0,
@@ -65,7 +65,7 @@ export default function CarouselContainer() {
     } else {
       setState({
         activeIndex: activeIndex + 1,
-        translate: -((activeIndex + 1) * getWidth()) + ((activeIndex + 1) * 12),
+        translate: -((activeIndex + 1) * getWidth()) + (activeIndex + 1) * 12,
       });
     }
   }

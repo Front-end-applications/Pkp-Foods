@@ -1,17 +1,19 @@
 import React from "react";
 
-import HeaderContainer from "../containers/HeaderContainer";
-import NavBarContainer from "../containers/NavBarContainer";
-import CollectionsContainer from "../containers/CollectionsContainer";
-import BestSellersContainer from "../containers/BestSellersContainer";
-import WhatsappContainer from "../containers/WhatsappLinkContainer";
-import FooterContainer from "../containers/FooterContainer";
+import {
+  HeaderContainer,
+  NavBarContainer,
+  CollectionsCardContainer,
+  BestSellersContainer,
+  WhatsappContainer,
+  FooterContainer,
+} from "../containers";
 
 export default function Collections() {
   return (
     <HeaderContainer background="#EAEDED">
       <NavBarContainer background="transparent" color="black" />
-      <CollectionsContainer />
+      <CollectionsCardContainer />
       <BestSellersContainer />
       <WhatsappContainer />
       <FooterContainer />

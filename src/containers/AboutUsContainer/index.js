@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AboutUs } from "../components";
+import { AboutUs } from "../../components";
 
 export default function AboutUsContainer() {
   return (

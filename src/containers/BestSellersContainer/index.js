@@ -1,6 +1,7 @@
 import React from "react";
-import BestSellers from "../components/bestSellers";
-import { Products, ProductCard } from "../components";
+
+import { BestSellers, ProductCard } from "../../components";
+
 const products = [
   {
     title: "abc",

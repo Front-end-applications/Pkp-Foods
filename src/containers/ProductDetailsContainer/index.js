@@ -1,26 +1,19 @@
 import React, { useContext } from "react";
-import * as ROUTES from "../constants/routes";
-import { ProductDetails } from "../components";
-import { CartContext } from "../context/shoppingCart";
+
+import * as ROUTES from "../../constants/routes";
+import { ProductDetails } from "../../components";
+import { CartContext } from "../../context/shoppingCart";
+import * as SERVICES from "./ProductDetailsService";
 
 export default function ProductDetailContainer({ ...restProps }) {
   const [cart, setCart] = useContext(CartContext);
 
-  function handleOnClick() {
-    console.log("In here!");
-    setCart((curCart) => [...curCart, restProps.state]);
-  }
+  console.log(CartContext);
 
   return (
     <ProductDetails>
       <ProductDetails.Image src={restProps.state.image} />
       <ProductDetails.Details>
-        {/*<div style={{ position: "absolute", width: "30%", height: "75%", overflow: "hidden" }}>
-          <ProductDetails.Image
-            src={restProps.state.image}
-            style={{ margin: "0px", width: "400%" }}
-          />
-        </div> */}
         <ProductDetails.Title>{restProps.state.title}</ProductDetails.Title>
         <ProductDetails.Price>
           {"₹"}
@@ -86,12 +79,15 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <ProductDetails.HorizontalRule />
 
-        <ProductDetails.Button onClick={handleOnClick} background="#a72c41">
+        <ProductDetails.Button
+          onClick={(_event) => SERVICES.handleCart(setCart, restProps)}
+          background="#a72c41"
+        >
           Add to cart
         </ProductDetails.Button>
         <ProductDetails.Button background="#08174c">
           <ProductDetails.ReactLink
-            onClick={handleOnClick}
+            onClick={(event) => SERVICES.handleCart(setCart, restProps)}
             to={ROUTES.SHOPPING_CART}
           >
             Buy now
@@ -126,3 +122,10 @@ export default function ProductDetailContainer({ ...restProps }) {
 // 2: 1000
 // ​​​
 // length: 3
+
+/*<div style={{ position: "absolute", width: "30%", height: "75%", overflow: "hidden" }}>
+          <ProductDetails.Image
+            src={restProps.state.image}
+            style={{ margin: "0px", width: "400%" }}
+          />
+        </div> */

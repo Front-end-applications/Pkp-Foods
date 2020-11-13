@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Whatsapp } from "../components";
+import { Whatsapp } from "../../components";
 
 export default function WhatsappContainer() {
   return (

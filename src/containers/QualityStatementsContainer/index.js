@@ -1,5 +1,5 @@
 import React from "react";
-import { QualityStatements } from "../components";
+import { QualityStatements } from "../../components";
 
 export default function QualityStatementsContainer() {
   return (

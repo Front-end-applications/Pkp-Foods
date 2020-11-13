@@ -1,15 +1,17 @@
 import React from "react";
 
-import HeaderContainer from "../containers/HeaderContainer";
-import JumbotronContainer from "../containers/JumbotronContainer";
-import TickerContainer from "../containers/TickerContainer";
-import NavBarContainer from "../containers/NavBarContainer";
-import CarouselContainer from "../containers/CarouselContainer";
-import CollectionsCardContainer from "../containers/CollectionsContainer";
-import QualityStatementsContainer from "../containers/QualityStatementsContainer";
-import InceptionContainer from "../containers/InceptionContainer";
-import WhatsappContainer from "../containers/WhatsappLinkContainer";
-import FooterContainer from "../containers/FooterContainer";
+import {
+  HeaderContainer,
+  JumbotronContainer,
+  TickerContainer,
+  NavBarContainer,
+  CarouselContainer,
+  CollectionsCardContainer,
+  QualityStatementsContainer,
+  InceptionContainer,
+  WhatsappContainer,
+  FooterContainer,
+} from "../containers";
 
 const viewCategories = ["Card Title", "Card Title 2"];
 
