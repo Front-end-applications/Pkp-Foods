@@ -8,16 +8,20 @@ import * as SERVICES from "./ProductDetailsService";
 export default function ProductDetailContainer({ ...restProps }) {
   const [cart, setCart] = useContext(CartContext);
 
-  console.log(CartContext);
+  restProps.state.quantity = 1;
+
+  console.log(restProps.state);
 
   return (
     <ProductDetails>
-      <ProductDetails.Image src={restProps.state.image} />
+      <ProductDetails.Image src="/images/products/Sweets.jpg" />
       <ProductDetails.Details>
-        <ProductDetails.Title>{restProps.state.title}</ProductDetails.Title>
+        <ProductDetails.Title>
+          {restProps.state.productName}
+        </ProductDetails.Title>
         <ProductDetails.Price>
           {"₹"}
-          {restProps.state.cost_per_kg}
+          {/* {restProps.state.cost_per_kg} */}
           {
             // / (1000 / product.weights[0])} {"/ "}
             // {product.weights[0]} {"gms"}
@@ -38,8 +42,16 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <ProductDetails.WeightsGroup>
           Weights
-          {restProps.state.weights.map((weight, index) => (
-            <ProductDetails.Weights key={index} name="weight" value={weight} />
+          {restProps.state.childArticlesList.map((childArticle, index) => (
+            <ProductDetails.Weights
+              key={index}
+              name="weight"
+              value={
+                childArticle.weight.weight +
+                " " +
+                childArticle.weight.unitOfMeasurement
+              }
+            />
           ))}
         </ProductDetails.WeightsGroup>
 
@@ -49,7 +61,10 @@ export default function ProductDetailContainer({ ...restProps }) {
           <p>Quantity</p>
           <div>
             <ProductDetails.QtyBtn>-</ProductDetails.QtyBtn>
-            <ProductDetails.Quantity />
+            <ProductDetails.Quantity
+              onChange={(event) => SERVICES.handleQuantity(restProps)}
+              value={restProps.state.quantity}
+            />
             <ProductDetails.QtyBtn>+</ProductDetails.QtyBtn>
           </div>
         </ProductDetails.QuantityGroup>

@@ -9,6 +9,8 @@ import * as SERVICES from "./ShoppingCartContainerService";
 export default function ShoppingCartContainer() {
   const [cart, setCart] = useContext(CartContext);
 
+  console.log(cart);
+
   return (
     <ShoppingCart>
       <ShoppingCart.Title>Shopping Cart</ShoppingCart.Title>
@@ -24,13 +26,14 @@ export default function ShoppingCartContainer() {
           {cart.map((product, index) => (
             <ShoppingCart.TableRow key={index}>
               <ShoppingCart.TableData>
-                <ShoppingCart.ItemImage src={product.image} />
+                <ShoppingCart.ItemImage src={product.productImage} />
                 <ShoppingCart.ItemDetails>
                   <ShoppingCart.ItemTitle to={""}>
-                    {product.title}
+                    {product.productName}
                   </ShoppingCart.ItemTitle>
                   <ShoppingCart.ItemWeight>
-                    Weight: {product.weights[0]} gms
+                    Weight: {product.childArticlesList[0].weight.weight}{" "}
+                    {product.childArticlesList[0].weight.unitOfMeasurement}
                   </ShoppingCart.ItemWeight>
                   <div>
                     <ShoppingCart.ItemButton>
@@ -44,16 +47,14 @@ export default function ShoppingCartContainer() {
                   </div>
                 </ShoppingCart.ItemDetails>
               </ShoppingCart.TableData>
-              <ShoppingCart.TableData>
-                ₹{(product.cost_per_kg * product.weights[0]) / 1000}
-              </ShoppingCart.TableData>
+              <ShoppingCart.TableData>₹</ShoppingCart.TableData>
               <ShoppingCart.TableData>
                 <ShoppingCart.QtyBtn>-</ShoppingCart.QtyBtn>
                 <ShoppingCart.Quantity></ShoppingCart.Quantity>
                 <ShoppingCart.QtyBtn>+</ShoppingCart.QtyBtn>
               </ShoppingCart.TableData>
               <ShoppingCart.TableData style={{ fontWeight: "bold" }}>
-                ₹{(product.cost_per_kg * product.weights[0]) / 1000}
+                ₹
               </ShoppingCart.TableData>
             </ShoppingCart.TableRow>
           ))}

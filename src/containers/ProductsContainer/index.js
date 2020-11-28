@@ -1,64 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 import { Products, ProductCard, Filter } from "../../components";
-
-const products = [
-  {
-    title: "abc",
-    image: "/images/products/Sweets.jpg",
-    cost_per_kg: 1520,
-    weights: [500, 1000],
-    category: "Traditional South Indian",
-    desc:
-      "An enchanting troika of premium quality whole cashew nuts, jaggery and ghee",
-    expiry: 3,
-    gluten_free: true,
-    vegan: true,
-  },
-  {
-    title: "def",
-    image: "/images/products/Sweets.jpg",
-    cost_per_kg: 1520,
-    weights: [250, 500, 1000],
-    category: "Traditional South Indian",
-    expiry: 3,
-    gluten_free: true,
-    vegan: true,
-  },
-  {
-    title: "ghi",
-    image: "/images/products/Sweets.jpg",
-    cost_per_kg: 1520,
-    weights: [250, 500, 1000],
-    category: "Traditional South Indian",
-    expiry: 3,
-    gluten_free: true,
-    vegan: true,
-  },
-  {
-    title: "jkl",
-    image: "/images/products/Sweets.jpg",
-    cost_per_kg: 1520,
-    weights: [250, 500, 1000],
-    category: "Traditional South Indian",
-    expiry: 3,
-    gluten_free: true,
-    vegan: true,
-  },
-  {
-    title: "mno",
-    image: "/images/products/Sweets.jpg",
-    cost_per_kg: 1520,
-    weights: [250, 500, 1000],
-    category: "Traditional South Indian",
-    expiry: 3,
-    gluten_free: true,
-    vegan: true,
-  },
-];
+import { useLocation } from "react-router-dom";
 
 export default function ProductsContainer() {
+  const [products, setProducts] = useState([]);
+  let category = useLocation().state;
+
+  const fetchProducts = () => {
+    axios
+      .get("http://localhost:8080/getProductsByFamilyId", {
+        params: {
+          familyId: category.familyId,
+        },
+      })
+      .then((res) => {
+        setProducts(res.data);
+      });
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Products>
       <Products.Header>
@@ -104,26 +71,30 @@ export default function ProductsContainer() {
               <FaArrowDown />
             </Products.Button>
           </Products.Sort>
+
           <Products.ProductsCardContainer>
-            {products.map((product, index) => (
-              <ProductCard
-                key={index}
-                to={{
-                  pathname: `/products/${index}`,
-                  state: product,
-                }}
-              >
-                <ProductCard.Image src={product.image} />
-                <ProductCard.ProductInformation>
-                  <ProductCard.Title>{product.title}</ProductCard.Title>
-                  <ProductCard.Price>
-                    {"₹"}
-                    {product.cost_per_kg / (1000 / product.weights[0])} {"/ "}
-                    {product.weights[0]} {"gms"}
-                  </ProductCard.Price>
-                </ProductCard.ProductInformation>
-              </ProductCard>
-            ))}
+            {products.parentArticlesList &&
+              products.parentArticlesList.map((product, index) => (
+                <ProductCard
+                  key={index}
+                  to={{
+                    pathname: `/products/${index}`,
+                    state: product,
+                  }}
+                >
+                  <ProductCard.Image src="/images/products/Sweets.jpg" />
+                  <ProductCard.ProductInformation>
+                    <ProductCard.Title>{product.productName}</ProductCard.Title>
+                    <ProductCard.Price>
+                      {console.log(product.childArticlesList[0])}
+                      {"₹"}
+                      {product.childArticlesList[0].maximumRetailPrice} {"/ "}
+                      {product.childArticlesList[0].weight.weight}{" "}
+                      {product.childArticlesList[0].weight.unitOfMeasurement}
+                    </ProductCard.Price>
+                  </ProductCard.ProductInformation>
+                </ProductCard>
+              ))}
           </Products.ProductsCardContainer>
         </Products.MainContentContainer>
       </Products.Body>

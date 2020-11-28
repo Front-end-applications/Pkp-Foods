@@ -1,41 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { Collections } from "../../components";
 
-const categories = [
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title",
-    desc: "Card Description",
-  },
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title",
-    desc: "Card Description",
-  },
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title",
-    desc: "Card Description",
-  },
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title 2",
-    desc: "Card Description",
-  },
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title 3",
-    desc: "Card Description",
-  },
-  {
-    img: "/images/products/Sweets.jpg",
-    title: "Card Title 3",
-    desc: "Card Description",
-  },
-];
-
 export default function CollectionsCardContainer({ ...restProps }) {
+  const [categories, setCategories] = useState([]);
+
+  const fetchCategories = () => {
+    axios.get("http://localhost:8080/getFamilies").then((res) => {
+      console.log(res.data);
+      setCategories(res.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <div>
       <Collections>
@@ -49,11 +30,14 @@ export default function CollectionsCardContainer({ ...restProps }) {
             )
             .map((category, index) => (
               <Collections.Card
-                to={`/collections/${category.title}`}
+                to={{
+                  pathname: `/collections/${category.familyName}`,
+                  state: category,
+                }}
                 key={index}
-                img={category.img}
-                title={category.title}
-                desc={category.desc}
+                img="/images/products/Sweets.jpg"
+                title={category.familyName}
+                desc="desc"
               />
             ))}
         </Collections.Row>
