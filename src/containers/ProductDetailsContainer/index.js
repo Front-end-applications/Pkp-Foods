@@ -1,24 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import * as ROUTES from "../../constants/routes";
 import { ProductDetails } from "../../components";
 import { CartContext } from "../../context/shoppingCart";
 import * as SERVICES from "./ProductDetailsService";
 
-export default function ProductDetailContainer({ ...restProps }) {
+export default function ProductDetailContainer() {
   const [cart, setCart] = useContext(CartContext);
+  const [state, setState] = useState(useLocation().state);
 
-  restProps.state.quantity = 1;
+  useEffect(() => {
+    setState({ ...state, quantity: 1, pincode: "" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  console.log(restProps.state);
+  console.log(state);
+
+  function handleChange(event, setState) {
+    console.log(event.target);
+    setState({ ...state, pincode: event.target.value });
+  }
 
   return (
     <ProductDetails>
-      <ProductDetails.Image src="/images/products/Sweets.jpg" />
+      <ProductDetails.Image
+        src={"/images/products/" + state.familyName + "/" + state.productImage}
+      />
       <ProductDetails.Details>
-        <ProductDetails.Title>
-          {restProps.state.productName}
-        </ProductDetails.Title>
+        <ProductDetails.Title>{state.productName}</ProductDetails.Title>
         <ProductDetails.Price>
           {"₹"}
           {/* {restProps.state.cost_per_kg} */}
@@ -28,10 +38,7 @@ export default function ProductDetailContainer({ ...restProps }) {
           }
         </ProductDetails.Price>
         <ProductDetails.Expiry>
-          Fresh For:{" "}
-          {restProps.state.expiry +
-            " " +
-            (restProps.state.expiry > 1 ? "days" : "day")}
+          Fresh For: {state.expiry + " " + (state.expiry > 1 ? "days" : "day")}
         </ProductDetails.Expiry>
 
         <ProductDetails.Availablity>
@@ -42,7 +49,7 @@ export default function ProductDetailContainer({ ...restProps }) {
 
         <ProductDetails.WeightsGroup>
           Weights
-          {restProps.state.childArticlesList.map((childArticle, index) => (
+          {state.childArticlesList.map((childArticle, index) => (
             <ProductDetails.Weights
               key={index}
               name="weight"
@@ -60,20 +67,39 @@ export default function ProductDetailContainer({ ...restProps }) {
         <ProductDetails.QuantityGroup>
           <p>Quantity</p>
           <div>
-            <ProductDetails.QtyBtn>-</ProductDetails.QtyBtn>
+            <ProductDetails.QtyBtn
+              onClick={(event) =>
+                SERVICES.handleQuantity(event, state, setState)
+              }
+              value="-"
+            >
+              -
+            </ProductDetails.QtyBtn>
             <ProductDetails.Quantity
-              onChange={(event) => SERVICES.handleQuantity(restProps)}
-              value={restProps.state.quantity}
+              value={state.quantity}
+              onChange={(event) =>
+                SERVICES.handleQuantity(event, state, setState)
+              }
+              onBlur={(event) =>
+                SERVICES.handleBlurQuantity(event, state, setState)
+              }
             />
-            <ProductDetails.QtyBtn>+</ProductDetails.QtyBtn>
+            <ProductDetails.QtyBtn
+              onClick={(event) =>
+                SERVICES.handleQuantity(event, state, setState)
+              }
+              value="+"
+            >
+              +
+            </ProductDetails.QtyBtn>
           </div>
         </ProductDetails.QuantityGroup>
 
         <ProductDetails.HorizontalRule />
 
-        {restProps.state.desc && (
+        {state.desc && (
           <>
-            <ProductDetails.Desc>{restProps.state.desc}</ProductDetails.Desc>
+            <ProductDetails.Desc>{state.desc}</ProductDetails.Desc>
             <ProductDetails.HorizontalRule />
           </>
         )}
@@ -86,7 +112,11 @@ export default function ProductDetailContainer({ ...restProps }) {
         <ProductDetails.HorizontalRule />
 
         <ProductDetails.PinCode>
-          <ProductDetails.Input placeholder="Enter Pincode" />
+          <ProductDetails.Input
+            placeholder="Enter Pincode"
+            value={state.pincode}
+            onChange={(event) => handleChange(event, setState)}
+          />
           <ProductDetails.PinCodeButton style={{ background: "#5a5a5a" }}>
             Check
           </ProductDetails.PinCodeButton>
@@ -95,14 +125,14 @@ export default function ProductDetailContainer({ ...restProps }) {
         <ProductDetails.HorizontalRule />
 
         <ProductDetails.Button
-          onClick={(_event) => SERVICES.handleCart(setCart, restProps)}
+          onClick={(_event) => SERVICES.handleCart(setCart, state)}
           background="#a72c41"
         >
           Add to cart
         </ProductDetails.Button>
         <ProductDetails.Button background="#08174c">
           <ProductDetails.ReactLink
-            onClick={(event) => SERVICES.handleCart(setCart, restProps)}
+            onClick={(event) => SERVICES.handleCart(setCart, state)}
             to={ROUTES.SHOPPING_CART}
           >
             Buy now
@@ -112,35 +142,3 @@ export default function ProductDetailContainer({ ...restProps }) {
     </ProductDetails>
   );
 }
-
-// ​​
-// category: "Traditional South Indian"
-// ​​
-// cost_per_kg: 1520
-// ​​
-// expiry: 3
-// ​​
-// gluten_free: true
-// ​​
-// image: "/images/products/Sweets.jpg"
-// ​​
-// title: "kaju Pak"
-// ​​
-// vegan: true
-// ​​
-// weights: (3) […]
-// ​​​
-// 0: 250
-// ​​​
-// 1: 500
-// ​​​
-// 2: 1000
-// ​​​
-// length: 3
-
-/*<div style={{ position: "absolute", width: "30%", height: "75%", overflow: "hidden" }}>
-          <ProductDetails.Image
-            src={restProps.state.image}
-            style={{ margin: "0px", width: "400%" }}
-          />
-        </div> */

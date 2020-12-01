@@ -9,8 +9,6 @@ import * as SERVICES from "./ShoppingCartContainerService";
 export default function ShoppingCartContainer() {
   const [cart, setCart] = useContext(CartContext);
 
-  console.log(cart);
-
   return (
     <ShoppingCart>
       <ShoppingCart.Title>Shopping Cart</ShoppingCart.Title>
@@ -48,11 +46,59 @@ export default function ShoppingCartContainer() {
                 </ShoppingCart.ItemDetails>
               </ShoppingCart.TableData>
               <ShoppingCart.TableData>₹</ShoppingCart.TableData>
+
               <ShoppingCart.TableData>
-                <ShoppingCart.QtyBtn>-</ShoppingCart.QtyBtn>
-                <ShoppingCart.Quantity></ShoppingCart.Quantity>
-                <ShoppingCart.QtyBtn>+</ShoppingCart.QtyBtn>
+                <ShoppingCart.QtyBtn
+                  onClick={(event) =>
+                    SERVICES.handleQuantity(
+                      event,
+                      product,
+                      index,
+                      cart,
+                      setCart
+                    )
+                  }
+                  value="-"
+                >
+                  -
+                </ShoppingCart.QtyBtn>
+                <ShoppingCart.Quantity
+                  value={product.quantity}
+                  onChange={(event) =>
+                    SERVICES.handleQuantity(
+                      event,
+                      product,
+                      index,
+                      cart,
+                      setCart
+                    )
+                  }
+                  onBlur={(event) =>
+                    SERVICES.handleBlurQuantity(
+                      event,
+                      product,
+                      index,
+                      cart,
+                      setCart
+                    )
+                  }
+                />
+                <ShoppingCart.QtyBtn
+                  onClick={(event) =>
+                    SERVICES.handleQuantity(
+                      event,
+                      product,
+                      index,
+                      cart,
+                      setCart
+                    )
+                  }
+                  value="+"
+                >
+                  +
+                </ShoppingCart.QtyBtn>
               </ShoppingCart.TableData>
+
               <ShoppingCart.TableData style={{ fontWeight: "bold" }}>
                 ₹
               </ShoppingCart.TableData>
@@ -61,10 +107,7 @@ export default function ShoppingCartContainer() {
 
           <ShoppingCart.ButtonsRow>
             <ShoppingCart.Button>
-              <ShoppingCart.ReactLink
-                color="#555555"
-                to={ROUTES.COLLECTION_CATEGORY}
-              >
+              <ShoppingCart.ReactLink color="#555555" to={ROUTES.COLLECTIONS}>
                 Continue Shopping
               </ShoppingCart.ReactLink>
             </ShoppingCart.Button>

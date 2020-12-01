@@ -13,7 +13,7 @@ import {
   FooterContainer,
 } from "../containers";
 
-const viewCategories = ["Card Title", "Card Title 2"];
+const viewCategories = ["Appalu", "Chikkis", "Mixtures", "Murruku", "Sweets"];
 
 export default function Home() {
   return (

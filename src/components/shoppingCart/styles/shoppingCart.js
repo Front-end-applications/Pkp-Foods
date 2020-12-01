@@ -138,7 +138,7 @@ export const Select = styled.select``;
 
 export const Options = styled.option``;
 
-export const Quantity = styled.input.attrs({ type: "number", min: "1" })`
+export const Quantity = styled.input.attrs({ type: "text", pattern: "[1-9]*" })`
   width: 27px;
   font-family: "Quicksand", sans-serif;
   padding: 0.3rem;

@@ -8,7 +8,6 @@ export default function CollectionsCardContainer({ ...restProps }) {
 
   const fetchCategories = () => {
     axios.get("http://localhost:8080/getFamilies").then((res) => {
-      console.log(res.data);
       setCategories(res.data);
     });
   };
@@ -22,11 +21,12 @@ export default function CollectionsCardContainer({ ...restProps }) {
       <Collections>
         <Collections.Title>{restProps.title}</Collections.Title>
         <Collections.Row>
+          {console.log("Executing")}
           {categories
             .filter((category) =>
               restProps.viewCategories === undefined
                 ? category
-                : restProps.viewCategories.includes(category.title)
+                : restProps.viewCategories.includes(category.familyName)
             )
             .map((category, index) => (
               <Collections.Card

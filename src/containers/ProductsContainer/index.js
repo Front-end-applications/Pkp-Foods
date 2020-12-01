@@ -79,7 +79,12 @@ export default function ProductsContainer() {
                   key={index}
                   to={{
                     pathname: `/products/${index}`,
-                    state: product,
+                    state: {
+                      familyId: products.familyId,
+                      familyName: products.familyName,
+                      familyImage: products.familyImage,
+                      ...product,
+                    },
                   }}
                 >
                   <ProductCard.Image src="/images/products/Sweets.jpg" />

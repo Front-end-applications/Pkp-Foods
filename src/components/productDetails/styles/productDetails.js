@@ -121,7 +121,8 @@ export const QuantityGroup = styled.div`
 `;
 
 export const Quantity = styled.input.attrs({
-  type: "number",
+  type: "text",
+  pattern: "[1-9]*",
 })`
   width: 27px;
   font-family: "Quicksand", sans-serif;
