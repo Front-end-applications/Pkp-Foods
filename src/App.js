@@ -13,7 +13,13 @@ import {
   ShoppingCart,
   Checkout,
   Payment,
-} from "./pages";
+} from "./pages/CustomerPortal";
+
+import {
+  ProductManagement,
+  OrderManagement,
+  CouponManagement,
+} from "./pages/AdminPortal";
 
 import * as ROUTES from "./constants/routes";
 import { CartProvider } from "./context/shoppingCart";
@@ -32,6 +38,9 @@ function App() {
         <Route exact path={ROUTES.SHOPPING_CART} component={ShoppingCart} />
         <Route exact path={ROUTES.CHECKOUT} component={Checkout} />
         <Route exact path={ROUTES.PAYMENT} component={Payment} />
+        <Route exact path={ROUTES.ADMIN_PRODUCT_MANAGEMENT} component={ProductManagement} />
+        <Route exact path={ROUTES.ADMIN_ORDER_MANAGEMENT} component={OrderManagement} />
+        <Route exact path={ROUTES.ADMIN_COUPON_MANAGEMENT} component={CouponManagement} />
       </Router>
     </CartProvider>
   );
