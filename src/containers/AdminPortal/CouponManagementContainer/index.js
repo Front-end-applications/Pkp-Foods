@@ -1,38 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { CouponManagement } from "../../../components/adminPortal";
+import * as SERVICES from "./CouponManagementService";
 
 export default function CouponManagementContainer() {
+
+    const coupon = {
+        "couponCode": "",
+        "description": "",
+        "discount": 0,
+        "discountType": "Percentage",
+        "validFrom": "",
+        "validTo": ""
+    }
+
+    const [state, setState] = useState(coupon);
+    const [coupons, setCoupons] = useState([]);
+
+    useEffect(() => {
+        SERVICES.fetchCoupons(setCoupons);
+    }, []);
+
     return (
         <CouponManagement>
             <CouponManagement.Section>
                 <CouponManagement.Row>
                     <CouponManagement.Column>
-                        <CouponManagement.Text label="Coupon code" />
+                        <CouponManagement.Text
+                            label="Coupon code"
+                            value={state.couponCode}
+                            onChange={(event) => SERVICES.handleCouponCode(event, state, setState)}
+                        />
                     </CouponManagement.Column>
                     <CouponManagement.Column>
-                        <CouponManagement.Text label="Code Description" />
+                        <CouponManagement.Text
+                            label="Code Description"
+                            value={state.description}
+                            onChange={(event) => SERVICES.handleDescription(event, state, setState)}
+                        />
                     </CouponManagement.Column>
                 </CouponManagement.Row>
                 <CouponManagement.Row>
                     <CouponManagement.Column>
-                        <CouponManagement.Text label="discount" />
+                        <CouponManagement.Text
+                            label="discount"
+                            value={state.discount}
+                            onChange={(event) => SERVICES.handleDiscount(event, state, setState)}
+                        />
                     </CouponManagement.Column>
                     <CouponManagement.Column>
-                        <CouponManagement.Select label="Discount type">
-
+                        <CouponManagement.Select
+                            label="Discount type"
+                            value={state.discountType}
+                            onChange={(event) => SERVICES.handleDiscountType(event, state, setState)}
+                        >
+                            <CouponManagement.Option>Fixed</CouponManagement.Option>
+                            <CouponManagement.Option>Percentage</CouponManagement.Option>
                         </CouponManagement.Select>
                     </CouponManagement.Column>
                     <CouponManagement.Column>
-                        <CouponManagement.Date label="Valid from" />
+                        <CouponManagement.Date
+                            label="Valid from"
+                            value={state.validFrom}
+                            onChange={(event) => SERVICES.handleValidFrom(event, state, setState)}
+                        />
                     </CouponManagement.Column>
                     <CouponManagement.Column>
-                        <CouponManagement.Date label="Valid to" />
+                        <CouponManagement.Date
+                            label="Valid to"
+                            value={state.validTo}
+                            onChange={(event) => SERVICES.handleValidTo(event, state, setState)}
+                        />
                     </CouponManagement.Column>
                 </CouponManagement.Row>
 
                 <CouponManagement.Row>
-                    <CouponManagement.CreateButton>Create</CouponManagement.CreateButton>
+                    <CouponManagement.CreateButton
+                        onClick={(event) => SERVICES.insertCoupons(event, state, setState, coupon)}
+                        value="refresh"
+                    >Create</CouponManagement.CreateButton>
                 </CouponManagement.Row>
             </CouponManagement.Section>
 
@@ -48,16 +94,19 @@ export default function CouponManagementContainer() {
                         <CouponManagement.TableHeader>Status</CouponManagement.TableHeader>
                         <CouponManagement.TableHeader>Delete</CouponManagement.TableHeader>
                     </CouponManagement.TableRow>
-                    <CouponManagement.TableRow>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                        <CouponManagement.TableData></CouponManagement.TableData>
-                    </CouponManagement.TableRow>
+                    {coupons.map((coupon, index) => (
+                        <CouponManagement.TableRow key={index}>
+                            <CouponManagement.TableData>{index + 1}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.couponCode}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.description}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.discount}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.discountType}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.validFrom}</CouponManagement.TableData>
+                            <CouponManagement.TableData>{coupon.validTo}</CouponManagement.TableData>
+                            <CouponManagement.TableData></CouponManagement.TableData>
+                        </CouponManagement.TableRow>
+                    ))}
+
                 </CouponManagement.Table>
             </CouponManagement.Row>
         </CouponManagement >

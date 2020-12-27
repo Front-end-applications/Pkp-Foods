@@ -9,14 +9,18 @@ export default function ProductManagementContainer() {
     const [classes, setClasses] = useState([]);
     const [bricks, setBricks] = useState([]);
     const [brands, setBrands] = useState([]);
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
         SERVICES.fetchFamilies(setFamilies);
         SERVICES.fetchClasses(setClasses);
         SERVICES.fetchBricks(setBricks);
         SERVICES.fetchBrands(setBrands);
+        SERVICES.fetchProducts(setProducts);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    console.log(products);
 
     return (
         <ProductManagement>
@@ -165,21 +169,40 @@ export default function ProductManagementContainer() {
                         <ProductManagement.TableHeader>Edit</ProductManagement.TableHeader>
                         <ProductManagement.TableHeader>Delete</ProductManagement.TableHeader>
                     </ProductManagement.TableRow>
-                    <ProductManagement.TableRow>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                        <ProductManagement.TableData></ProductManagement.TableData>
-                    </ProductManagement.TableRow>
+                    {products.map((product, index) => (
+                        <ProductManagement.TableRow key={index}>
+                            <ProductManagement.TableData>{index + 1}</ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                {product.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyName}
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                {product.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId}
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                {
+                                    product.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId +
+                                    product.childArticleIdentifier.parentArticles.parentArticleIdentifier.productId +
+                                    product.childArticleIdentifier.weights.weightCode
+                                }
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                Article Desc
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                {product.childArticleIdentifier.weights.unitOfMeasurement}
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>
+                                {product.childArticleIdentifier.weights.weight}
+                            </ProductManagement.TableData>
+                            <ProductManagement.TableData>{product.maximumRetailPrice}</ProductManagement.TableData>
+                            <ProductManagement.TableData></ProductManagement.TableData>
+                            <ProductManagement.TableData>{product.inventory}</ProductManagement.TableData>
+                            <ProductManagement.TableData></ProductManagement.TableData>
+                            <ProductManagement.TableData></ProductManagement.TableData>
+                            <ProductManagement.TableData></ProductManagement.TableData>
+                        </ProductManagement.TableRow>
+                    ))}
+
                 </ProductManagement.Table>
             </ProductManagement.Row>
         </ProductManagement>
