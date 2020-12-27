@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa"
 
 import { CouponManagement } from "../../../components/adminPortal";
 import * as SERVICES from "./CouponManagementService";
@@ -77,7 +78,6 @@ export default function CouponManagementContainer() {
                 <CouponManagement.Row>
                     <CouponManagement.CreateButton
                         onClick={(event) => SERVICES.insertCoupons(event, state, setState, coupon)}
-                        value="refresh"
                     >Create</CouponManagement.CreateButton>
                 </CouponManagement.Row>
             </CouponManagement.Section>
@@ -94,7 +94,7 @@ export default function CouponManagementContainer() {
                         <CouponManagement.TableHeader>Status</CouponManagement.TableHeader>
                         <CouponManagement.TableHeader>Delete</CouponManagement.TableHeader>
                     </CouponManagement.TableRow>
-                    {coupons.map((coupon, index) => (
+                    {coupons.length !== 0 && coupons.map((coupon, index) => (
                         <CouponManagement.TableRow key={index}>
                             <CouponManagement.TableData>{index + 1}</CouponManagement.TableData>
                             <CouponManagement.TableData>{coupon.couponCode}</CouponManagement.TableData>
@@ -103,7 +103,11 @@ export default function CouponManagementContainer() {
                             <CouponManagement.TableData>{coupon.discountType}</CouponManagement.TableData>
                             <CouponManagement.TableData>{coupon.validFrom}</CouponManagement.TableData>
                             <CouponManagement.TableData>{coupon.validTo}</CouponManagement.TableData>
-                            <CouponManagement.TableData></CouponManagement.TableData>
+                            <CouponManagement.TableData>
+                                <CouponManagement.DeleteButton
+                                    onClick={(event) => SERVICES.deleteCoupon(event, coupon.couponCode)}
+                                ><FaTrash /></CouponManagement.DeleteButton>
+                            </CouponManagement.TableData>
                         </CouponManagement.TableRow>
                     ))}
 

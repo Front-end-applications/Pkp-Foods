@@ -13,6 +13,7 @@ import {
     Select,
     Option,
     CreateButton,
+    DeleteButton,
     Table,
     TableRow,
     TableHeader,
@@ -95,6 +96,10 @@ CouponManagement.Option = ({ children, ...restProps }) => {
 
 CouponManagement.CreateButton = ({ children, ...restProps }) => {
     return <CreateButton {...restProps}>{children}</CreateButton>
+}
+
+CouponManagement.DeleteButton = ({ children, ...restProps }) => {
+    return <DeleteButton {...restProps}>{children}</DeleteButton>
 }
 
 CouponManagement.Table = ({ children, ...restProps }) => {

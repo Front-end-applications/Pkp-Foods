@@ -96,6 +96,14 @@ export const CreateButton = styled.button`
   margin: auto;
 `;
 
+export const DeleteButton = styled.button`
+  margin: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+`;
+
 export const Table = styled.div`
   margin: 1.5rem 0;
   width: 100%;
@@ -126,5 +134,6 @@ export const TableData = styled.div`
   line-height: 1;
   white-space: nowrap;
   font-size: 14px;
+  text-align: center;
 `;
 

@@ -23,6 +23,20 @@ export const insertCoupons = (event, coupon, setState, ref) => {
     window.location.reload();
 };
 
+export const deleteCoupon = (event, couponCode) => {
+    event.preventDefault()
+    const couponCodes = [];
+    couponCodes.push(couponCode);
+
+    axios
+        .post("http://localhost:8080//deleteCoupons", couponCodes)
+        .then((res) => {
+
+        });
+
+    window.location.reload();
+};
+
 /* Event management methods */
 export const handleCouponCode = (event, state, setState) => {
     setState({ ...state, couponCode: event.target.value });
