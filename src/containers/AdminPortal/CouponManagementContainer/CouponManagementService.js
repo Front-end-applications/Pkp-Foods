@@ -55,7 +55,11 @@ export const handleDiscountType = (event, state, setState) => {
 }
 
 export const handleValidFrom = (event, state, setState) => {
-    setState({ ...state, validFrom: event.target.value });
+    setState({
+        ...state,
+        validFrom: event.target.value,
+        validTo: (event.target.value > state.validTo ? event.target.value : state.validTo)
+    });
 }
 
 export const handleValidTo = (event, state, setState) => {

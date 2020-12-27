@@ -6,13 +6,18 @@ import * as SERVICES from "./CouponManagementService";
 
 export default function CouponManagementContainer() {
 
+    const today = new Date();
+    var formattedDate = today.getFullYear() + "-" +
+        (today.getMonth().length < 2 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1) + "-" +
+        (today.getDate().length < 2 ? "0" + today.getDate() : today.getDate());
+
     const coupon = {
         "couponCode": "",
         "description": "",
         "discount": 0,
         "discountType": "Percentage",
-        "validFrom": "",
-        "validTo": ""
+        "validFrom": formattedDate,
+        "validTo": formattedDate
     }
 
     const [state, setState] = useState(coupon);
@@ -62,6 +67,7 @@ export default function CouponManagementContainer() {
                     <CouponManagement.Column>
                         <CouponManagement.Date
                             label="Valid from"
+                            min={formattedDate}
                             value={state.validFrom}
                             onChange={(event) => SERVICES.handleValidFrom(event, state, setState)}
                         />
@@ -69,6 +75,7 @@ export default function CouponManagementContainer() {
                     <CouponManagement.Column>
                         <CouponManagement.Date
                             label="Valid to"
+                            min={state.validFrom}
                             value={state.validTo}
                             onChange={(event) => SERVICES.handleValidTo(event, state, setState)}
                         />
