@@ -1,4 +1,5 @@
 export { default as AdminContainer } from "./AdminContainer";
-export { default as ProductManagementContainer } from "./ProductManagementContainer";
-export { default as OrderManagementContainer } from "./OrderManagementContainer";
-export { default as CouponManagementContainer } from "./CouponManagementContainer";
+export { default as ChildArticlesContainer } from "./ChildArticlesContainer";
+export { default as ParentArticlesContainer } from "./ParentArticlesContainer";
+export { default as OrdersContainer } from "./OrdersContainer";
+export { default as CouponsContainer } from "./CouponsContainer";

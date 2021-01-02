@@ -8,13 +8,19 @@ export default function AdminContainer({ children }) {
         <Admin>
             <Admin.Tabs>
                 <Admin.Tab>
-                    <Admin.TabTitle to={ROUTES.ADMIN_PRODUCT_MANAGEMENT}>Product management</Admin.TabTitle>
+                    <Admin.TabTitle to={ROUTES.ADMIN_CHILD_ARTICLES}>Child Articles</Admin.TabTitle>
                 </Admin.Tab>
                 <Admin.Tab>
-                    <Admin.TabTitle to={ROUTES.ADMIN_ORDER_MANAGEMENT}>Order management</Admin.TabTitle>
+                    <Admin.TabTitle to={ROUTES.ADMIN_PARENT_ARTICLES}>Parent Articles</Admin.TabTitle>
                 </Admin.Tab>
                 <Admin.Tab>
-                    <Admin.TabTitle to={ROUTES.ADMIN_COUPON_MANAGEMENT}>Coupon management</Admin.TabTitle>
+                    <Admin.TabTitle to={ROUTES.ADMIN_CATEGORIES}>Categories</Admin.TabTitle>
+                </Admin.Tab>
+                <Admin.Tab>
+                    <Admin.TabTitle to={ROUTES.ADMIN_ORDERS}>Orders</Admin.TabTitle>
+                </Admin.Tab>
+                <Admin.Tab>
+                    <Admin.TabTitle to={ROUTES.ADMIN_COUPONS}>Coupons</Admin.TabTitle>
                 </Admin.Tab>
             </Admin.Tabs>
             <Admin.Page>

@@ -8,9 +8,9 @@ import {
     TableRow,
     TableHeader,
     TableData,
-} from "./styles/orderManagement";
+} from "./styles/orders";
 
-export default function OrderManagement({ children, ...restProps }) {
+export default function Orders({ children, ...restProps }) {
     return (
         <Container {...restProps}>
             <Inner>{children}</Inner>
@@ -18,22 +18,22 @@ export default function OrderManagement({ children, ...restProps }) {
     )
 }
 
-OrderManagement.Row = ({ children, ...restProps }) => {
+Orders.Row = ({ children, ...restProps }) => {
     return <Row {...restProps}>{children}</Row>
 }
 
-OrderManagement.Table = ({ children, ...restProps }) => {
+Orders.Table = ({ children, ...restProps }) => {
     return <Table {...restProps}>{children}</Table>
 }
 
-OrderManagement.TableRow = ({ children, ...restProps }) => {
+Orders.TableRow = ({ children, ...restProps }) => {
     return <TableRow {...restProps}>{children}</TableRow>
 }
 
-OrderManagement.TableHeader = ({ children, ...restProps }) => {
+Orders.TableHeader = ({ children, ...restProps }) => {
     return <TableHeader {...restProps}>{children}</TableHeader>
 }
 
-OrderManagement.TableData = ({ children, ...restProps }) => {
+Orders.TableData = ({ children, ...restProps }) => {
     return <TableData {...restProps}>{children}</TableData>
 }

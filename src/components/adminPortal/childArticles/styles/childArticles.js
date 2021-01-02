@@ -96,6 +96,14 @@ export const CreateButton = styled.button`
   margin: auto;
 `;
 
+export const EditDeleteButton = styled.button`
+  margin: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+`;
+
 export const Table = styled.div`
   margin: 1.5rem 0;
   width: 100%;
@@ -118,6 +126,7 @@ export const TableHeader = styled.h5`
 
 export const TableData = styled.div`
   display: table-cell;
+  text-align: center;
   border: 1px solid #ccc;
   margin: 0;
   padding: 0.5rem;

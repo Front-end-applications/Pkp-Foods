@@ -1,4 +1,5 @@
 export { default as Admin } from "./admin";
-export { default as ProductManagement } from "./productManagement";
-export { default as OrderManagement } from "./orderManagement";
-export { default as CouponManagement } from "./couponManagement";
+export { default as ChildArticles } from "./childArticles";
+export { default as ParentArticles } from "./parentArticles";
+export { default as Orders } from "./orders";
+export { default as Coupons } from "./coupons";

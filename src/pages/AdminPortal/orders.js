@@ -2,13 +2,13 @@ import React from "react";
 
 import {
     AdminContainer,
-    CouponManagementContainer
+    OrdersContainer
 } from "../../containers/AdminPortal";
 
-export default function CouponManagement() {
+export default function Orders() {
     return (
         <AdminContainer>
-            <CouponManagementContainer />
+            <OrdersContainer />
         </AdminContainer>
     );
 }

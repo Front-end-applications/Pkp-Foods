@@ -13,14 +13,14 @@ import {
     Select,
     Option,
     CreateButton,
-    DeleteButton,
+    EditDeleteButton,
     Table,
     TableRow,
     TableHeader,
     TableData,
-} from "./styles/couponManagement";
+} from "./styles/childArticles";
 
-export default function CouponManagement({ children, ...restProps }) {
+export default function ChildArticles({ children, ...restProps }) {
     return (
         <Container {...restProps}>
             <Inner>{children}</Inner>
@@ -28,27 +28,27 @@ export default function CouponManagement({ children, ...restProps }) {
     )
 }
 
-CouponManagement.Row = ({ children, ...restProps }) => {
+ChildArticles.Row = ({ children, ...restProps }) => {
     return <Row {...restProps}>{children}</Row>
 }
 
-CouponManagement.Column = ({ children, ...restProps }) => {
+ChildArticles.Column = ({ children, ...restProps }) => {
     return <Column {...restProps}>{children}</Column>
 }
 
-CouponManagement.Section = ({ children, ...restProps }) => {
+ChildArticles.Section = ({ children, ...restProps }) => {
     return <Section {...restProps}>{children}</Section>
 }
 
-CouponManagement.SectionTitle = ({ children, ...restProps }) => {
+ChildArticles.SectionTitle = ({ children, ...restProps }) => {
     return <SectionTitle {...restProps}>{children}</SectionTitle>
 }
 
-CouponManagement.Label = ({ children, ...restProps }) => {
+ChildArticles.Label = ({ children, ...restProps }) => {
     return <Label {...restProps}>{children}</Label>
 }
 
-CouponManagement.Text = ({ ...restProps }) => {
+ChildArticles.Text = ({ ...restProps }) => {
     return (
         <>
             {restProps.label && (
@@ -62,7 +62,7 @@ CouponManagement.Text = ({ ...restProps }) => {
     )
 }
 
-CouponManagement.Date = ({ ...restProps }) => {
+ChildArticles.Date = ({ ...restProps }) => {
     return (
         <>
             {restProps.label && (
@@ -76,7 +76,7 @@ CouponManagement.Date = ({ ...restProps }) => {
     )
 }
 
-CouponManagement.Select = ({ children, ...restProps }) => {
+ChildArticles.Select = ({ children, ...restProps }) => {
     return (
         <>
             {restProps.label && (
@@ -90,30 +90,30 @@ CouponManagement.Select = ({ children, ...restProps }) => {
     );
 }
 
-CouponManagement.Option = ({ children, ...restProps }) => {
+ChildArticles.Option = ({ children, ...restProps }) => {
     return <Option {...restProps}>{children}</Option>
 }
 
-CouponManagement.CreateButton = ({ children, ...restProps }) => {
+ChildArticles.CreateButton = ({ children, ...restProps }) => {
     return <CreateButton {...restProps}>{children}</CreateButton>
 }
 
-CouponManagement.DeleteButton = ({ children, ...restProps }) => {
-    return <DeleteButton {...restProps}>{children}</DeleteButton>
+ChildArticles.EditDeleteButton = ({ children, ...restProps }) => {
+    return <EditDeleteButton {...restProps}>{children}</EditDeleteButton>
 }
 
-CouponManagement.Table = ({ children, ...restProps }) => {
+ChildArticles.Table = ({ children, ...restProps }) => {
     return <Table {...restProps}>{children}</Table>
 }
 
-CouponManagement.TableRow = ({ children, ...restProps }) => {
+ChildArticles.TableRow = ({ children, ...restProps }) => {
     return <TableRow {...restProps}>{children}</TableRow>
 }
 
-CouponManagement.TableHeader = ({ children, ...restProps }) => {
+ChildArticles.TableHeader = ({ children, ...restProps }) => {
     return <TableHeader {...restProps}>{children}</TableHeader>
 }
 
-CouponManagement.TableData = ({ children, ...restProps }) => {
+ChildArticles.TableData = ({ children, ...restProps }) => {
     return <TableData {...restProps}>{children}</TableData>
 }

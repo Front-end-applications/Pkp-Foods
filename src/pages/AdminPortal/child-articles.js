@@ -2,14 +2,14 @@ import React from "react";
 
 import {
   AdminContainer,
-  ProductManagementContainer
+  ChildArticlesContainer
 } from "../../containers/AdminPortal";
 
-export default function ProductManagement() {
+export default function ChildArticles() {
   return (
     <>
       <AdminContainer>
-        <ProductManagementContainer />
+        <ChildArticlesContainer />
       </AdminContainer>
     </>
   );
