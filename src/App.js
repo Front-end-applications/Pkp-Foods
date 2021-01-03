@@ -20,6 +20,7 @@ import {
   Orders,
   ParentArticles,
   Coupons,
+  Categories
 } from "./pages/AdminPortal";
 
 import * as ROUTES from "./constants/routes";
@@ -41,6 +42,7 @@ function App() {
         <Route exact path={ROUTES.PAYMENT} component={Payment} />
         <Route exact path={ROUTES.ADMIN_CHILD_ARTICLES} component={ChildArticles} />
         <Route exact path={ROUTES.ADMIN_PARENT_ARTICLES} component={ParentArticles} />
+        <Route exact path={ROUTES.ADMIN_CATEGORIES} component={Categories} />
         <Route exact path={ROUTES.ADMIN_ORDERS} component={Orders} />
         <Route exact path={ROUTES.ADMIN_COUPONS} component={Coupons} />
       </Router>

@@ -9,8 +9,8 @@ export const SHOPPING_CART = "/cart";
 export const CHECKOUT = "/checkout";
 export const PAYMENT = "/payment";
 
-export const ADMIN_CHILD_ARTICLES = "/admin";
+export const ADMIN_CATEGORIES = "/admin";
 export const ADMIN_PARENT_ARTICLES = "/admin/parent-articles";
-export const ADMIN_CATEGORIES = "/admin/categories";
+export const ADMIN_CHILD_ARTICLES = "/admin/child-articles";
 export const ADMIN_ORDERS = "/admin/orders";
 export const ADMIN_COUPONS = "/admin/coupons";

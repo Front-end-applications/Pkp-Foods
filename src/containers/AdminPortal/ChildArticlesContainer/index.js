@@ -253,7 +253,10 @@ export default function ChildArticlesContainer() {
                                 {childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyName}
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
-                                {childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId}
+                                {
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.productId
+                                }
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
                                 {

@@ -29,7 +29,6 @@ export default function ParentArticlesContainer() {
     const [parentArticles, setParentArticles] = useState([]);
 
     useEffect(() => {
-
         SERVICES.fetchFamilies(setFamilies, setState);
         SERVICES.fetchClassesByFamilyId(state.parentArticleIdentifier.family.familyId, setClasses, setState);
         SERVICES.fetchBricksByClassId(state.classId, setBricks, setState);
