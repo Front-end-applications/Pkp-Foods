@@ -20,7 +20,7 @@ export const fetchFamilies = (setFamilies, setState) => {
                                         classIdentifier: {
                                             ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
                                             family: {
-                                                familyId: res.data[0].familyId
+                                                familyId: res.data.length > 0 ? res.data[0].familyId : ""
                                             }
                                         }
                                     }

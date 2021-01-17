@@ -64,8 +64,6 @@ export default function CategoriesContainer() {
         SERVICES.fetchClassesByFamilyId(familyId, setClassesByFamilyId, setBrickState);
     }, [brickState.brickIdentifier.classEntity.classIdentifier.family.familyId]);
 
-    console.log(brickState)
-
     return (
         <Categories>
             <Categories.Section>

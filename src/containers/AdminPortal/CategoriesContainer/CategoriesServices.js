@@ -6,14 +6,13 @@ export const fetchFamilies = (setFamilies, setClassState, setBrickState) => {
         .get("http://localhost:8080//getFamilies")
         .then((res) => {
             setFamilies(res.data);
-
             setClassState(prevState => (
                 {
                     ...prevState,
                     classIdentifier: {
                         ...prevState.classIdentifier,
                         family: {
-                            familyId: res.data[0].familyId
+                            familyId: res.data.length > 0 ? res.data[0].familyId : ""
                         }
                     }
                 }
@@ -28,7 +27,7 @@ export const fetchFamilies = (setFamilies, setClassState, setBrickState) => {
                             classIdentifier: {
                                 ...prevState.brickIdentifier.classEntity.classIdentifier,
                                 family: {
-                                    familyId: res.data[0].familyId
+                                    familyId: res.data.length > 0 ? res.data[0].familyId : ""
                                 }
                             }
                         }
