@@ -7,7 +7,6 @@ import * as SERVICES from "./CategoriesServices";
 export default function CategoriesContainer() {
 
     const family = {
-        "familyId": "",
         "familyName": "",
         "familyImage": "",
         "description": ""
@@ -15,7 +14,6 @@ export default function CategoriesContainer() {
 
     const _class = {
         "classIdentifier": {
-            "classId": "",
             "family": {
                 "familyId": ""
             }
@@ -26,7 +24,6 @@ export default function CategoriesContainer() {
 
     const brick = {
         "brickIdentifier": {
-            "brickId": "",
             "classEntity": {
                 "classIdentifier": {
                     "classId": "",
@@ -76,13 +73,6 @@ export default function CategoriesContainer() {
                 <Categories.Row>
                     <Categories.Column>
                         <Categories.Row>
-                            <Categories.Column>
-                                <Categories.Text
-                                    label="Family code"
-                                    value={familyState.familyId}
-                                    onChange={(event) => SERVICES.handleFamilyCode(event, setFamilyState)}
-                                />
-                            </Categories.Column>
                             <Categories.Column>
                                 <Categories.Text
                                     label="Family Name"
@@ -163,13 +153,6 @@ export default function CategoriesContainer() {
                         <Categories.Row>
                             <Categories.Column>
                                 <Categories.Text
-                                    label="Class code"
-                                    value={classState.classIdentifier.classId}
-                                    onChange={(event) => SERVICES.handleClassCode(event, setClassState)}
-                                />
-                            </Categories.Column>
-                            <Categories.Column>
-                                <Categories.Text
                                     label="Class Name"
                                     value={classState.className}
                                     onChange={(event) => SERVICES.handleClassName(event, setClassState)}
@@ -234,22 +217,17 @@ export default function CategoriesContainer() {
                                     value={brickState.brickIdentifier.classEntity.classIdentifier.classId}
                                     onChange={(event) => SERVICES.handleBrickClass(event, setBrickState)}
                                 >
-                                    {classesByFamilyId.map((_class, index) => (
-                                        <Categories.Option key={index} value={_class.classId}>
-                                            {_class.className}
-                                        </Categories.Option>
-                                    ))}
+                                    {
+                                        classesByFamilyId.map((_class, index) => (
+                                            <Categories.Option key={index} value={_class.classIdentifier.classId}>
+                                                {_class.className}
+                                            </Categories.Option>
+                                        ))
+                                    }
                                 </Categories.Select>
                             </Categories.Column>
                         </Categories.Row>
                         <Categories.Row>
-                            <Categories.Column>
-                                <Categories.Text
-                                    label="Brick code"
-                                    value={brickState.brickIdentifier.brickId}
-                                    onChange={(event) => SERVICES.handleBrickCode(event, setBrickState)}
-                                />
-                            </Categories.Column>
                             <Categories.Column>
                                 <Categories.Text
                                     label="Brick Name"

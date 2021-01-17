@@ -13,8 +13,73 @@ export const fetchFamilies = (setFamilies, setState) => {
                     parentArticles: {
                         parentArticleIdentifier: {
                             ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
-                            family: {
-                                familyId: res.data[0].familyId
+                            brick: {
+                                brickIdentifier: {
+                                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                                    classEntity: {
+                                        classIdentifier: {
+                                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                            family: {
+                                                familyId: res.data[0].familyId
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
+        });
+};
+
+export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
+    axios
+        .get("http://localhost:8080//getClasses?familyId=" + familyId)
+        .then((res) => {
+            setClasses(res.data);
+            setState(prevState => ({
+                ...prevState,
+                childArticleIdentifier: {
+                    ...prevState.childArticleIdentifier,
+                    parentArticles: {
+                        parentArticleIdentifier: {
+                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
+                            brick: {
+                                brickIdentifier: {
+                                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                                    classEntity: {
+                                        classIdentifier: {
+                                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                            classId: res.data.length > 0 ? res.data[0].classIdentifier.classId : ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
+        });
+};
+
+export const fetchBricksByClassId = (classId, setBricks, setState) => {
+    axios
+        .get("http://localhost:8080//getBricks?classId=" + classId)
+        .then((res) => {
+            setBricks(res.data);
+            setState(prevState => ({
+                ...prevState,
+                childArticleIdentifier: {
+                    ...prevState.childArticleIdentifier,
+                    parentArticles: {
+                        parentArticleIdentifier: {
+                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
+                            brick: {
+                                brickIdentifier: {
+                                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                                    brickId: res.data.length > 0 ? res.data[0].brickIdentifier.brickId : ""
+                                }
                             }
                         }
                     }
@@ -31,23 +96,6 @@ export const fetchTaxes = (setTaxes) => {
         });
 };
 
-export const fetchWeights = (setWeights, setState) => {
-    axios
-        .get("http://localhost:8080//getWeights")
-        .then((res) => {
-            setWeights(res.data);
-            setState(prevState => ({
-                ...prevState,
-                childArticleIdentifier: {
-                    ...prevState.childArticleIdentifier,
-                    weights: {
-                        weightCode: res.data[0].weightCode
-                    }
-                }
-            }));
-        });
-};
-
 export const fetchParentArticles = (setParentArticles) => {
     axios
         .get("http://localhost:8080//getParentArticles")
@@ -56,9 +104,9 @@ export const fetchParentArticles = (setParentArticles) => {
         });
 };
 
-export const fetchParentArticlesByFamilyId = (setParentArticles, familyId, setState) => {
+export const fetchParentArticlesByBrickId = (brickId, setParentArticles, setState) => {
     axios
-        .get("http://localhost:8080//getParentArticles?familyId=" + familyId)
+        .get("http://localhost:8080//getParentArticles?brickId=" + brickId)
         .then((res) => {
             setParentArticles(res.data);
             (res.data.length > 0) && setState(prevState => ({
@@ -68,7 +116,7 @@ export const fetchParentArticlesByFamilyId = (setParentArticles, familyId, setSt
                     parentArticles: {
                         parentArticleIdentifier: {
                             ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
-                            productId: res.data[0].parentArticleIdentifier.productId
+                            parentArticleId: res.data[0].parentArticleIdentifier.parentArticleId
                         }
                     }
                 }
@@ -126,14 +174,71 @@ export const handleFamily = (event, setState) => {
             parentArticles: {
                 parentArticleIdentifier: {
                     ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
-                    family: {
-                        familyId: value
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                            classEntity: {
+                                classIdentifier: {
+                                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                    family: {
+                                        familyId: value
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }));
 };
+
+export const handleClass = (event, setState) => {
+    const value = event.target.value;
+    setState(prevState => ({
+        ...prevState,
+        childArticleIdentifier: {
+            ...prevState.childArticleIdentifier,
+            parentArticles: {
+                parentArticleIdentifier: {
+                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                            classEntity: {
+                                classIdentifier: {
+                                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                    classId: value
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }));
+};
+
+export const handleBrick = (event, setState) => {
+    const value = event.target.value;
+    setState(prevState => ({
+        ...prevState,
+        childArticleIdentifier: {
+            ...prevState.childArticleIdentifier,
+            parentArticles: {
+                parentArticleIdentifier: {
+                    ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier,
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier,
+                            brickId: value
+                        }
+                    }
+                }
+            }
+        }
+    }));
+}
 
 export const handleParentArticle = (event, setState) => {
 
@@ -153,18 +258,14 @@ export const handleParentArticle = (event, setState) => {
     }));
 }
 
-export const handleWeights = (event, setState) => {
+export const handleWeight = (event, setState) => {
     const value = event.target.value;
+    setState(prevState => ({ ...prevState, weight: value }));
+}
 
-    setState(prevState => ({
-        ...prevState,
-        childArticleIdentifier: {
-            ...prevState.childArticleIdentifier,
-            weights: {
-                weightCode: value
-            }
-        }
-    }));
+export const handleUnitOfMeasurement = (event, setState) => {
+    const value = event.target.value;
+    setState(prevState => ({ ...prevState, unitOfMeasurement: value }));
 }
 
 export const handleInventory = (event, setState) => {
@@ -189,7 +290,7 @@ export const handleHeight = (event, setState) => {
 
 export const handleEANCode = (event, setState) => {
     const value = event.target.value;
-    setState(prevState => ({ ...prevState, EANCode: value }));
+    setState(prevState => ({ ...prevState, eanCode: value }));
 }
 
 export const handleTax = (event, setState) => {

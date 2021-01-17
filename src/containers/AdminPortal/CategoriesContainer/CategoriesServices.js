@@ -200,11 +200,6 @@ export const deleteBrands = (event, brand) => {
 /* Event management services */
 
 /* Family events */
-export const handleFamilyCode = (event, setFamilyState) => {
-    const value = event.target.value;
-    setFamilyState(prevState => ({ ...prevState, familyId: value }));
-}
-
 export const handleFamilyName = (event, setFamilyState) => {
     const value = event.target.value;
     setFamilyState(prevState => ({ ...prevState, familyName: value }));
@@ -231,19 +226,6 @@ export const handleClassFamily = (event, setClassState) => {
                 family: {
                     familyId: value
                 }
-            }
-        }
-    ));
-}
-
-export const handleClassCode = (event, setFamilyState) => {
-    const value = event.target.value;
-    setFamilyState(prevState => (
-        {
-            ...prevState,
-            classIdentifier: {
-                ...prevState.classIdentifier,
-                classId: value
             }
         }
     ));
@@ -288,19 +270,6 @@ export const handleBrickClass = (event, setBrickState) => {
                         classId: value,
                     }
                 }
-            }
-        }
-    ));
-}
-
-export const handleBrickCode = (event, setBrickState) => {
-    const value = event.target.value;
-    setBrickState(prevState => (
-        {
-            ...prevState,
-            brickIdentifier: {
-                ...prevState.brickIdentifier,
-                brickId: value,
             }
         }
     ));

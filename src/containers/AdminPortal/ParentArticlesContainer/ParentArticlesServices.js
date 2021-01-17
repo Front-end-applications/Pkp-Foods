@@ -8,10 +8,20 @@ export const fetchFamilies = (setFamilies, setState) => {
             setFamilies(res.data);
             setState(prevState => ({
                 ...prevState,
-                "parentArticleIdentifier": {
+                parentArticleIdentifier: {
                     ...prevState.parentArticleIdentifier,
-                    "family": {
-                        "familyId": res.data[0].familyId
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                            classEntity: {
+                                classIdentifier: {
+                                    ...prevState.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                    family: {
+                                        familyId: res.data[0].familyId
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }));
@@ -25,7 +35,20 @@ export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
             setClasses(res.data);
             setState(prevState => ({
                 ...prevState,
-                classId: res.data.length > 0 ? res.data[0].classIdentifier.classId : ""
+                parentArticleIdentifier: {
+                    ...prevState.parentArticleIdentifier,
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                            classEntity: {
+                                classIdentifier: {
+                                    ...prevState.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                                    classId: res.data.length > 0 ? res.data[0].classIdentifier.classId : ""
+                                }
+                            }
+                        }
+                    }
+                }
             }));
         });
 };
@@ -37,7 +60,15 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
             setBricks(res.data);
             setState(prevState => ({
                 ...prevState,
-                brickId: res.data.length > 0 ? res.data[0].brickIdentifier.brickId : ""
+                parentArticleIdentifier: {
+                    ...prevState.parentArticleIdentifier,
+                    brick: {
+                        brickIdentifier: {
+                            ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                            brickId: res.data.length > 0 ? res.data[0].brickIdentifier.brickId : ""
+                        }
+                    }
+                }
             }));
         });
 };
@@ -101,8 +132,18 @@ export const handleFamily = (event, setState) => {
         ...prevState,
         parentArticleIdentifier: {
             ...prevState.parentArticleIdentifier,
-            family: {
-                familyId: value
+            brick: {
+                brickIdentifier: {
+                    ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                    classEntity: {
+                        classIdentifier: {
+                            ...prevState.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                            family: {
+                                familyId: value
+                            }
+                        }
+                    }
+                }
             }
         }
     }));
@@ -110,12 +151,39 @@ export const handleFamily = (event, setState) => {
 
 export const handleClass = (event, setState) => {
     const value = event.target.value;
-    setState(prevState => ({ ...prevState, classId: value }));
+    setState(prevState => ({
+        ...prevState,
+        parentArticleIdentifier: {
+            ...prevState.parentArticleIdentifier,
+            brick: {
+                brickIdentifier: {
+                    ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                    classEntity: {
+                        classIdentifier: {
+                            ...prevState.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier,
+                            classId: value
+                        }
+                    }
+                }
+            }
+        }
+    }));
 };
 
 export const handleBrick = (event, setState) => {
     const value = event.target.value;
-    setState(prevState => ({ ...prevState, brickId: value }));
+    setState(prevState => ({
+        ...prevState,
+        parentArticleIdentifier: {
+            ...prevState.parentArticleIdentifier,
+            brick: {
+                brickIdentifier: {
+                    ...prevState.parentArticleIdentifier.brick.brickIdentifier,
+                    brickId: value
+                }
+            }
+        }
+    }));
 }
 
 export const handleBrand = (event, setState) => {
@@ -123,20 +191,9 @@ export const handleBrand = (event, setState) => {
     setState(prevState => ({ ...prevState, brandId: value }));
 };
 
-export const handleArticleCode = (event, setState) => {
+export const handleParentArticleName = (event, setState) => {
     const value = event.target.value;
-    setState(prevState => ({
-        ...prevState,
-        parentArticleIdentifier: {
-            ...prevState.parentArticleIdentifier,
-            productId: value
-        }
-    }));
-};
-
-export const handleProductName = (event, setState) => {
-    const value = event.target.value;
-    setState(prevState => ({ ...prevState, productName: value }));
+    setState(prevState => ({ ...prevState, parentArticleName: value }));
 };
 
 export const handleExpiry = (event, setState) => {

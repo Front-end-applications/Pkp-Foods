@@ -21,7 +21,6 @@ export default function CollectionsCardContainer({ ...restProps }) {
       <Collections>
         <Collections.Title>{restProps.title}</Collections.Title>
         <Collections.Row>
-          {console.log("Executing")}
           {categories
             .filter((category) =>
               restProps.viewCategories === undefined

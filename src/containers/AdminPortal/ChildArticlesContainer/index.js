@@ -15,27 +15,36 @@ export default function ChildArticlesContainer() {
         "childArticleIdentifier": {
             "parentArticles": {
                 "parentArticleIdentifier": {
-                    "productId": "",
-                    "family": {
-                        "familyId": ""
+                    "parentArticleId": "01",
+                    "brick": {
+                        "brickIdentifier": {
+                            "brickId": "",
+                            "classEntity": {
+                                "classIdentifier": {
+                                    "classId": "",
+                                    "family": {
+                                        "familyId": ""
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-            },
-            "weights": {
-                "weightCode": ""
             }
         },
+        "weight": 0,
+        "unitOfMeasurement": "",
         "costPrice": 0,
         "margin": 0,
         "discount": 0,
         "discountType": "",
-        "taxCode": "TAX5",
+        "taxCode": "",
         "maximumRetailPrice": 0,
         "offerPrice": 0,
         "length": 0,
         "width": 0,
         "height": 0,
-        "EANCode": "",
+        "eanCode": "",
         "inventory": 0,
         "validFrom": formattedDate,
         "validTo": formattedDate,
@@ -44,27 +53,43 @@ export default function ChildArticlesContainer() {
 
     const [state, setState] = useState(product);
     const [families, setFamilies] = useState([]);
+    const [classes, setClasses] = useState([]);
+    const [bricks, setBricks] = useState([]);
     const [taxes, setTaxes] = useState([]);
-    const [weights, setWeights] = useState([]);
     const [parentArticles, setParentArticles] = useState([]);
     const [childArticles, setChildArticles] = useState([]);
 
     useEffect(() => {
-        const familyId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId;
+        const familyId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId;
+        const classId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId;
+        const brickId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId;
 
         SERVICES.fetchFamilies(setFamilies, setState);
+        SERVICES.fetchClassesByFamilyId(familyId, setClasses, setState);
+        SERVICES.fetchBricksByClassId(classId, setBricks, setState);
         SERVICES.fetchTaxes(setTaxes);
-        SERVICES.fetchWeights(setWeights, setState);
+        SERVICES.fetchParentArticlesByBrickId(brickId, setParentArticles, setState);
+
         SERVICES.fetchChildArticles(setChildArticles);
-        SERVICES.fetchParentArticlesByFamilyId(setParentArticles, familyId, setState);
     }, []);
 
     useEffect(() => {
-        const familyId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId;
+        const familyId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId;
+        SERVICES.fetchClassesByFamilyId(familyId, setClasses, setState);
+    }, [state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId]);
 
-        SERVICES.fetchParentArticlesByFamilyId(setParentArticles, familyId, setState);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId]);
+    useEffect(() => {
+        const classId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId;
+        SERVICES.fetchBricksByClassId(classId, setBricks, setState);
+    }, [state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId]);
+
+    useEffect(() => {
+        const brickId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId;
+        SERVICES.fetchParentArticlesByBrickId(brickId, setParentArticles, setState);
+    }, [state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId]);
+
+    console.log(state)
+    console.log(classes)
 
     return (
         <ChildArticles>
@@ -74,7 +99,7 @@ export default function ChildArticlesContainer() {
                     <ChildArticles.Column>
                         <ChildArticles.Select
                             label="family"
-                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId}
+                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId}
                             onChange={(event) => SERVICES.handleFamily(event, setState)}
                         >
                             {families.map((family, index) => (
@@ -86,13 +111,39 @@ export default function ChildArticlesContainer() {
                     </ChildArticles.Column>
                     <ChildArticles.Column>
                         <ChildArticles.Select
+                            label="Class"
+                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId}
+                            onChange={(event) => SERVICES.handleClass(event, setState)}
+                        >
+                            {classes.map((cls, index) => (
+                                <ChildArticles.Option key={index} value={cls.classIdentifier.classId}>
+                                    {cls.className}
+                                </ChildArticles.Option>
+                            ))}
+                        </ChildArticles.Select>
+                    </ChildArticles.Column>
+                    <ChildArticles.Column>
+                        <ChildArticles.Select
+                            label="Brick"
+                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId}
+                            onChange={(event) => SERVICES.handleBrick(event, setState)}
+                        >
+                            {bricks.map((brick, index) => (
+                                <ChildArticles.Option key={index} value={brick.brickIdentifier.brickId}>
+                                    {brick.brickName}
+                                </ChildArticles.Option>
+                            ))}
+                        </ChildArticles.Select>
+                    </ChildArticles.Column>
+                    <ChildArticles.Column>
+                        <ChildArticles.Select
                             label="Parent article"
-                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.productId}
+                            value={state.childArticleIdentifier.parentArticles.parentArticleIdentifier.parentArticleId}
                             onChange={(event) => SERVICES.handleParentArticle(event, setState)}
                         >
                             {parentArticles.map((parentArticle, index) => (
-                                <ChildArticles.Option key={index} value={parentArticle.parentArticleIdentifier.productId}>
-                                    {parentArticle.productName}
+                                <ChildArticles.Option key={index} value={parentArticle.parentArticleIdentifier.parentArticleId}>
+                                    {parentArticle.parentArticleName}
                                 </ChildArticles.Option>
                             ))}
                         </ChildArticles.Select>
@@ -104,17 +155,18 @@ export default function ChildArticlesContainer() {
                 <ChildArticles.SectionTitle>Product dimensions</ChildArticles.SectionTitle>
                 <ChildArticles.Row>
                     <ChildArticles.Column>
-                        <ChildArticles.Select
-                            label="Weights"
-                            value={state.childArticleIdentifier.weights.weightCode}
-                            onChange={(event) => SERVICES.handleWeights(event, setState)}
-                        >
-                            {weights.map((weight, index) => (
-                                <ChildArticles.Option key={index} value={weight.weightCode}>
-                                    {weight.weight + " " + weight.unitOfMeasurement}
-                                </ChildArticles.Option>
-                            ))}
-                        </ChildArticles.Select>
+                        <ChildArticles.Text
+                            label="Weight"
+                            value={state.weight}
+                            onChange={(event) => SERVICES.handleWeight(event, setState)}
+                        />
+                    </ChildArticles.Column>
+                    <ChildArticles.Column>
+                        <ChildArticles.Text
+                            label="Unit of Measurement"
+                            value={state.unitOfMeasurement}
+                            onChange={(event) => SERVICES.handleUnitOfMeasurement(event, setState)}
+                        />
                     </ChildArticles.Column>
                     <ChildArticles.Column>
                         <ChildArticles.Text
@@ -155,7 +207,7 @@ export default function ChildArticlesContainer() {
                     <ChildArticles.Column>
                         <ChildArticles.Text
                             label="EAN"
-                            value={state.EANCode}
+                            value={state.eanCode}
                             onChange={(event) => SERVICES.handleEANCode(event, setState)}
                         />
                     </ChildArticles.Column>
@@ -250,26 +302,30 @@ export default function ChildArticlesContainer() {
                         <ChildArticles.TableRow key={index}>
                             <ChildArticles.TableData>{index + 1}</ChildArticles.TableData>
                             <ChildArticles.TableData>
-                                {childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyName}
+                                {childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyName}
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
                                 {
-                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId +
-                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.productId
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.parentArticleId
                                 }
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
                                 {
-                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.family.familyId +
-                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.productId +
-                                    childArticle.childArticleIdentifier.weights.weightCode
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId +
+                                    childArticle.childArticleIdentifier.parentArticles.parentArticleIdentifier.parentArticleId +
+                                    childArticle.childArticleIdentifier.childArticleId
                                 }
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
-                                {childArticle.childArticleIdentifier.weights.weight}
+                                {childArticle.weight}
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>
-                                {childArticle.childArticleIdentifier.weights.unitOfMeasurement}
+                                {childArticle.unitOfMeasurement}
                             </ChildArticles.TableData>
                             <ChildArticles.TableData>{childArticle.maximumRetailPrice}</ChildArticles.TableData>
                             <ChildArticles.TableData>{childArticle.offerPrice}</ChildArticles.TableData>
