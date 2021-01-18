@@ -24,7 +24,7 @@ export default function ParentArticlesContainer() {
         },
         "parentArticleName": "",
         "parentArticleImage": "",
-        "brandId": "PKP",
+        "brandId": "",
         "expiry": 0,
         "description": ""
     };
@@ -40,7 +40,7 @@ export default function ParentArticlesContainer() {
         SERVICES.fetchFamilies(setFamilies, setState);
         SERVICES.fetchClassesByFamilyId(state.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.family.familyId, setClasses, setState);
         SERVICES.fetchBricksByClassId(state.parentArticleIdentifier.brick.brickIdentifier.classEntity.classIdentifier.classId, setBricks, setState);
-        SERVICES.fetchBrands(setBrands);
+        SERVICES.fetchBrands(setBrands, setState);
         SERVICES.fetchParentArticles(setParentArticles);
     }, []);
 

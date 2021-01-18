@@ -73,13 +73,17 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
         });
 };
 
-export const fetchBrands = (setBrands) => {
+export const fetchBrands = (setBrands, setState) => {
     axios
         .get("http://localhost:8080//getBrands")
         .then((res) => {
             setBrands(res.data);
+            setState(prevState => ({
+                ...prevState,
+                brandId: res.data.length > 0 ? res.data[0].brandId : ""
+            }));
         });
-};
+}
 
 export const fetchParentArticles = (setParentArticles) => {
     axios
