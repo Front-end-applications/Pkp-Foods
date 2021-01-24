@@ -1,5 +1,10 @@
 export { default as AboutUsContainer } from "./AboutUsContainer";
 export { default as AuthenticationContainer } from "./AuthenticationContainer";
+export { default as ProfileContainer } from "./ProfileContainer";
+export { default as ProfileAddressContainer } from "./ProfileAddressContainer";
+export { default as CustomerOrdersContainer } from "./CustomerOrdersContainer";
+export { default as WishlistContainer } from "./WishlistContainer";
+export { default as GiftCardsContainer } from "./GiftCardsContainer";
 export { default as BestSellersContainer } from "./BestSellersContainer";
 export { default as CarouselContainer } from "./CarouselContainer";
 export { default as CheckoutContainer } from "./CheckoutContainer";

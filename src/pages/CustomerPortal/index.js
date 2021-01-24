@@ -8,3 +8,8 @@ export { default as Blog } from "./blog";
 export { default as ShoppingCart } from "./shopping-cart";
 export { default as Checkout } from "./checkout";
 export { default as Payment } from "./payment";
+export { default as Profile } from "./profile";
+export { default as ProfileAddress } from "./profile-address";
+export { default as CustomerOrders } from "./customer-orders";
+export { default as Wishlist } from "./wishlist";
+export { default as GiftCards } from "./gift-cards";

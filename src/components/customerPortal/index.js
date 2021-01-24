@@ -26,3 +26,9 @@ export { default as ProductDetails } from "./productDetails";
 export { default as ShoppingCart } from "./shoppingCart";
 export { default as Checkout } from "./checkout";
 export { default as Payment } from "./payment";
+
+export { default as Profile } from "./profile";
+export { default as ProfileAddress } from "./profileAddress";
+export { default as CustomerOrders } from "./customerOrders";
+export { default as Wishlist } from "./wishlist";
+export { default as GiftCards } from "./giftCards";

@@ -5,7 +5,7 @@ export const Link = styled.a`
   align-items: center;
   justify-content: center;
   position: fixed;
-  width: 45px;
+  width: 65px;
   bottom: 25px;
   right: 25px;
 

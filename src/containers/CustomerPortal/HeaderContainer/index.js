@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaShoppingCart, FaMapMarkerAlt } from "react-icons/fa";
+import { FaShoppingCart, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 
 import { Header } from "../../../components/customerPortal";
 import PincodeModalContainer from "../PincodeModalContainer";
@@ -15,10 +15,11 @@ export default function HeaderContainer({ children, ...restProps }) {
           <Header.Inner>
             <Header.ReactLink to={ROUTES.SHOPPING_CART}>
               <FaShoppingCart />
-              &nbsp;Cart
             </Header.ReactLink>
-            <Header.Link>Login</Header.Link>
-            <Header.Link>Sign up</Header.Link>
+            {/* <Header.Link>Sign In | Register</Header.Link> */}
+            <Header.ReactLink to={ROUTES.CUSTOMER_PROFILE}>
+              <FaUser />
+            </Header.ReactLink>
             <Header.Select>
               <Header.Option>India</Header.Option>
             </Header.Select>

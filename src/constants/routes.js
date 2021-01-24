@@ -8,6 +8,11 @@ export const PRODUCTS = "/products/:productId";
 export const SHOPPING_CART = "/cart";
 export const CHECKOUT = "/checkout";
 export const PAYMENT = "/payment";
+export const CUSTOMER_PROFILE = "/profile";
+export const CUSTOMER_PROFILE_ADDRESS = "/profile-address";
+export const CUSTOMER_ORDERS = "/orders";
+export const WISHLIST = "/wishlist";
+export const GIFT_CARDS = "/gift-cards";
 
 export const ADMIN_CATEGORIES = "/admin";
 export const ADMIN_PARENT_ARTICLES = "/admin/parent-articles";

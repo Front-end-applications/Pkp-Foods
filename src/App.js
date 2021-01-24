@@ -13,6 +13,11 @@ import {
   ShoppingCart,
   Checkout,
   Payment,
+  Profile,
+  ProfileAddress,
+  CustomerOrders,
+  Wishlist,
+  GiftCards,
 } from "./pages/CustomerPortal";
 
 import {
@@ -40,6 +45,12 @@ function App() {
         <Route exact path={ROUTES.SHOPPING_CART} component={ShoppingCart} />
         <Route exact path={ROUTES.CHECKOUT} component={Checkout} />
         <Route exact path={ROUTES.PAYMENT} component={Payment} />
+        <Route exact path={ROUTES.CUSTOMER_PROFILE} component={Profile} />
+        <Route exact path={ROUTES.CUSTOMER_PROFILE_ADDRESS} component={ProfileAddress} />
+        <Route exact path={ROUTES.CUSTOMER_ORDERS} component={CustomerOrders} />
+        <Route exact path={ROUTES.WISHLIST} component={Wishlist} />
+        <Route exact path={ROUTES.GIFT_CARDS} component={GiftCards} />
+
         <Route exact path={ROUTES.ADMIN_CHILD_ARTICLES} component={ChildArticles} />
         <Route exact path={ROUTES.ADMIN_PARENT_ARTICLES} component={ParentArticles} />
         <Route exact path={ROUTES.ADMIN_CATEGORIES} component={Categories} />
