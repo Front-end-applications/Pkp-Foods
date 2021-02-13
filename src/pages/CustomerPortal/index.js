@@ -13,3 +13,4 @@ export { default as ProfileAddress } from "./profile-address";
 export { default as CustomerOrders } from "./customer-orders";
 export { default as Wishlist } from "./wishlist";
 export { default as GiftCards } from "./gift-cards";
+export { default as Authentication } from "./authentication";

@@ -3,7 +3,7 @@ import axios from "axios";
 /* Product management services */
 export const fetchFamilies = (setFamilies, setState) => {
     axios
-        .get("http://localhost:8080//getFamilies")
+        .get("http://localhost:8080/getFamilies")
         .then((res) => {
             setFamilies(res.data);
             setState(prevState => ({
@@ -30,7 +30,7 @@ export const fetchFamilies = (setFamilies, setState) => {
 
 export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
     axios
-        .get("http://localhost:8080//getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId)
         .then((res) => {
             setClasses(res.data);
             setState(prevState => ({
@@ -55,7 +55,7 @@ export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
 
 export const fetchBricksByClassId = (classId, setBricks, setState) => {
     axios
-        .get("http://localhost:8080//getBricks?classId=" + classId)
+        .get("http://localhost:8080/getBricks?classId=" + classId)
         .then((res) => {
             setBricks(res.data);
             setState(prevState => ({
@@ -75,7 +75,7 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
 
 export const fetchBrands = (setBrands, setState) => {
     axios
-        .get("http://localhost:8080//getBrands")
+        .get("http://localhost:8080/getBrands")
         .then((res) => {
             setBrands(res.data);
             setState(prevState => ({
@@ -87,7 +87,7 @@ export const fetchBrands = (setBrands, setState) => {
 
 export const fetchParentArticles = (setParentArticles) => {
     axios
-        .get("http://localhost:8080//getParentArticles")
+        .get("http://localhost:8080/getParentArticles")
         .then((res) => {
             setParentArticles(res.data);
         });
@@ -98,7 +98,7 @@ export const insertParentArticles = (event, state, setState, refParentArticle) =
     const parentArticles = [];
     parentArticles.push(state);
     axios
-        .post("http://localhost:8080//insertParentArticles", parentArticles)
+        .post("http://localhost:8080/insertParentArticles", parentArticles)
         .then((res) => {
 
         });
@@ -118,7 +118,7 @@ export const deleteParentArticle = (event, parentArticle) => {
     parentArticles.push(parentArticle);
 
     axios
-        .post("http://localhost:8080//deleteParentArticles", parentArticles)
+        .post("http://localhost:8080/deleteParentArticles", parentArticles)
         .then((res) => {
 
         });

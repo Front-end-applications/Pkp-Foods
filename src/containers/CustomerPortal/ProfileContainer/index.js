@@ -3,6 +3,7 @@ import { FaFileAlt, FaHeart, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
 
 import { Profile } from "../../../components/customerPortal"
 import * as ROUTES from "../../../constants/routes";
+import * as SERVICES from "./profileServices";
 
 export default function ProfileContainer() {
     return (
@@ -14,6 +15,7 @@ export default function ProfileContainer() {
                     <Profile.SideBarLinks to={ROUTES.WISHLIST}>Wishlist</Profile.SideBarLinks>
                     <Profile.SideBarLinks to={ROUTES.CUSTOMER_PROFILE_ADDRESS}>Addresses</Profile.SideBarLinks>
                     <Profile.SideBarLinks to={ROUTES.GIFT_CARDS}>Gift cards</Profile.SideBarLinks>
+                    <Profile.Button onClick={(event) => SERVICES.handleLogout(event)}>Logout</Profile.Button>
                 </Profile.SideBar>
                 <Profile.MainContent>
                     <Profile.Header>

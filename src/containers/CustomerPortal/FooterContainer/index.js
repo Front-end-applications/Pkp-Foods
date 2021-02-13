@@ -55,13 +55,13 @@ export default function FooterContainer() {
           <Footer.Title>Connect with us</Footer.Title>
           <div>
             <Footer.SocialLinks
-              href="https://www.instagram.com/?hl=en"
+              href="https://www.instagram.com/pkpfoods/"
               target="_blank"
             >
               <FaInstagram />
             </Footer.SocialLinks>
             <Footer.SocialLinks
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/pkpfoods/"
               target="_blank"
             >
               <FaFacebook />

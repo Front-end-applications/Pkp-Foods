@@ -67,7 +67,7 @@ export default function ChildArticlesContainer() {
         SERVICES.fetchFamilies(setFamilies, setState);
         SERVICES.fetchClassesByFamilyId(familyId, setClasses, setState);
         SERVICES.fetchBricksByClassId(classId, setBricks, setState);
-        SERVICES.fetchTaxes(setTaxes);
+        SERVICES.fetchTaxes(setTaxes, setState);
         SERVICES.fetchParentArticlesByBrickId(brickId, setParentArticles, setState);
 
         SERVICES.fetchChildArticles(setChildArticles);
@@ -87,9 +87,6 @@ export default function ChildArticlesContainer() {
         const brickId = state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId;
         SERVICES.fetchParentArticlesByBrickId(brickId, setParentArticles, setState);
     }, [state.childArticleIdentifier.parentArticles.parentArticleIdentifier.brick.brickIdentifier.brickId]);
-
-    console.log(state)
-    console.log(classes)
 
     return (
         <ChildArticles>

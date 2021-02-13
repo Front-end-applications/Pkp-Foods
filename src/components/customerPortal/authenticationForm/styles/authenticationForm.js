@@ -1,18 +1,18 @@
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 
 export const Container = styled.div`
   box-sizing: border-box;
-  font-family: sans-serif;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
   height: 85vh;
   margin: 2rem;
 `;
 
 export const Inner = styled.div`
-  backgoround: #fff;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -22,15 +22,30 @@ export const Inner = styled.div`
   min-height: 480px;
 `;
 
+const show = keyframes`
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+`;
+
 export const SigninContainer = styled.div`
   position: absolute;
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in;
-
   left: 0;
   width: 50%;
   z-index: 2;
+
+  &.right-panel-active {
+    transform: translateX(100%);
+  }
 `;
 
 export const SignupContainer = styled.div`
@@ -43,6 +58,13 @@ export const SignupContainer = styled.div`
   width: 50%;
   opacity: 0;
   z-index: 1;
+
+  &.right-panel-active {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: ${show} 0.6s;
+  }
 `;
 
 export const Title = styled.h1`
@@ -70,6 +92,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
+  font-size: 12px;
   background: #eee;
   border: none;
   padding: 12px 15px;
@@ -82,20 +105,20 @@ export const Link = styled.a`
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
+  cursor: pointer;
 `;
 
 export const SocialLinks = styled.div`
   margin: 20px 0;
 
   & ${Link} {
-    cursor: pointer;
     border: 1px solid #ddd;
-    font-size: 42px;
+    font-size: 18px;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 5px;
+    margin: 0 8px;
     height: 40px;
     width: 40px;
   }
@@ -126,37 +149,86 @@ export const OverlayContainer = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
-  width: 100%;
+  width: 50%;
   height: 100%;
   overflow: hidden;
-  transtition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
   z-index: 100;
+
+  &.right-panel-active {
+    transform: translateX(-100%);
+  }
 `;
 
 export const Overlay = styled.div`
-  background: #ff416c;
-  background: linear-gradient(to right, #ff4b2b, #ff416c) no-repeat 0 0 / cover;
-  color: #fff;
-  position: relative;
-  left: 0%;
+  background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
   transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+	transition: transform 0.6s ease-in-out;
+
+  &.right-panel-active {
+  	transform: translateX(50%);
+  }
 `;
 
 export const OverlayTitle = styled.h1``;
 
-export const OverlayPanel = styled.div`
+export const OverlayRight = styled.div`
   position: absolute;
-  top: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+
+  right: 0;
+	transform: translateX(0);
 
   ${Submit} {
     background: transparent;
     border-color: #fff;
   }
+
+  &.right-panel-active {
+    transform: translateX(20%);
+  }
 `;
 
-export const OverlayRight = styled.div``;
+export const OverlayLeft = styled.div`
+  position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
 
-export const OverlayLeft = styled.div``;
+  transform: translateX(-20%);
+
+  ${Submit} {
+    background: transparent;
+    border-color: #fff;
+  }
+
+  &.right-panel-active {
+    transform: translateX(0);
+  }
+`;

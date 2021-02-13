@@ -3,7 +3,7 @@ import axios from "axios";
 /* Product management services */
 export const fetchFamilies = (setFamilies, setState) => {
     axios
-        .get("http://localhost:8080//getFamilies")
+        .get("http://localhost:8080/getFamilies")
         .then((res) => {
             setFamilies(res.data);
             setState(prevState => ({
@@ -35,7 +35,7 @@ export const fetchFamilies = (setFamilies, setState) => {
 
 export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
     axios
-        .get("http://localhost:8080//getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId)
         .then((res) => {
             setClasses(res.data);
             setState(prevState => ({
@@ -65,7 +65,7 @@ export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
 
 export const fetchBricksByClassId = (classId, setBricks, setState) => {
     axios
-        .get("http://localhost:8080//getBricks?classId=" + classId)
+        .get("http://localhost:8080/getBricks?classId=" + classId)
         .then((res) => {
             setBricks(res.data);
             setState(prevState => ({
@@ -88,17 +88,21 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
         });
 };
 
-export const fetchTaxes = (setTaxes) => {
+export const fetchTaxes = (setTaxes, setState) => {
     axios
-        .get("http://localhost:8080//getTaxes")
+        .get("http://localhost:8080/getTaxes")
         .then((res) => {
             setTaxes(res.data);
+            setState(prevState => ({
+                ...prevState,
+                taxCode: res.data.length > 0 ? res.data[0].taxCode : ""
+            }));
         });
 };
 
 export const fetchParentArticles = (setParentArticles) => {
     axios
-        .get("http://localhost:8080//getParentArticles")
+        .get("http://localhost:8080/getParentArticles")
         .then((res) => {
             setParentArticles(res.data);
         });
@@ -106,7 +110,7 @@ export const fetchParentArticles = (setParentArticles) => {
 
 export const fetchParentArticlesByBrickId = (brickId, setParentArticles, setState) => {
     axios
-        .get("http://localhost:8080//getParentArticles?brickId=" + brickId)
+        .get("http://localhost:8080/getParentArticles?brickId=" + brickId)
         .then((res) => {
             setParentArticles(res.data);
             (res.data.length > 0) && setState(prevState => ({
@@ -126,19 +130,19 @@ export const fetchParentArticlesByBrickId = (brickId, setParentArticles, setStat
 
 export const fetchChildArticles = (setChildArticles) => {
     axios
-        .get("http://localhost:8080//getChildArticles")
+        .get("http://localhost:8080/getChildArticles")
         .then((res) => {
             setChildArticles(res.data);
         });
 };
 
 export const insertChildArticles = (event, state, setState, refProduct) => {
-    event.preventDefault()
+    event.preventDefault();
+    console.log("ChildArticlesServices: insertChildArticles");
     const products = [];
     products.push(state);
-    console.log(state)
     axios
-        .post("http://localhost:8080//insertChildArticles", products)
+        .post("http://localhost:8080/insertChildArticles", products)
         .then((res) => {
 
         });
@@ -153,7 +157,7 @@ export const deleteChildArticle = (event, product) => {
     products.push(product);
 
     axios
-        .post("http://localhost:8080//deleteChildArticles", products)
+        .post("http://localhost:8080/deleteChildArticles", products)
         .then((res) => {
 
         });

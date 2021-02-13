@@ -15,7 +15,6 @@ import {
   OverlayContainer,
   Overlay,
   OverlayTitle,
-  OverlayPanel,
   OverlayRight,
   OverlayLeft,
 } from "./styles/authenticationForm";
@@ -56,7 +55,7 @@ AuthenticationForm.Text = ({ children, ...restProps }) => {
   return <Text {...restProps}>{children}</Text>;
 };
 
-AuthenticationForm.Input = ({ children, ...restProps }) => {
+AuthenticationForm.Input = ({ ...restProps }) => {
   return <Input {...restProps} />;
 };
 
@@ -74,10 +73,6 @@ AuthenticationForm.Overlay = ({ children, ...restProps }) => {
 
 AuthenticationForm.OverlayTitle = ({ children, ...restProps }) => {
   return <OverlayTitle {...restProps}>{children}</OverlayTitle>;
-};
-
-AuthenticationForm.OverlayPanel = ({ children, ...restProps }) => {
-  return <OverlayPanel {...restProps}>{children}</OverlayPanel>;
 };
 
 AuthenticationForm.OverlayLeft = ({ children, ...restProps }) => {

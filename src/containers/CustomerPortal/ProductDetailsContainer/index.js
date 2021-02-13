@@ -54,9 +54,9 @@ export default function ProductDetailContainer() {
               key={index}
               name="weight"
               value={
-                childArticle.weight.weight +
+                childArticle.weight +
                 " " +
-                childArticle.weight.unitOfMeasurement
+                childArticle.unitOfMeasurement
               }
             />
           ))}

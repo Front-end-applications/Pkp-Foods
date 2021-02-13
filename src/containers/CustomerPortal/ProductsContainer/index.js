@@ -94,8 +94,8 @@ export default function ProductsContainer() {
                       {console.log(product.childArticlesList[0])}
                       {"₹"}
                       {product.childArticlesList[0].maximumRetailPrice} {"/ "}
-                      {product.childArticlesList[0].weight.weight}{" "}
-                      {product.childArticlesList[0].weight.unitOfMeasurement}
+                      {product.childArticlesList[0].weight}{" "}
+                      {product.childArticlesList[0].unitOfMeasurement}
                     </ProductCard.Price>
                   </ProductCard.ProductInformation>
                 </ProductCard>

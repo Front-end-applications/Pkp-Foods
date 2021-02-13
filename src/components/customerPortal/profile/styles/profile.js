@@ -40,8 +40,11 @@ export const SideBarLinks = styled(ReactRouterLink)`
   :hover {
     color: #C86F45;
   }
-
 `
+
+export const Button = styled.button`
+  
+`;
 
 export const MainContent = styled.div`
   margin-bottom: 1rem;

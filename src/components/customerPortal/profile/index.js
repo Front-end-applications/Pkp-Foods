@@ -6,6 +6,7 @@ import {
     Body,
     SideBar,
     SideBarLinks,
+    Button,
     MainContent,
     Header,
     HeaderImage,
@@ -39,6 +40,10 @@ Profile.SideBar = ({ children, ...restProps }) => {
 
 Profile.SideBarLinks = ({ children, ...restProps }) => {
     return <SideBarLinks {...restProps}>{children}</SideBarLinks>;
+};
+
+Profile.Button = ({ children, ...restProps }) => {
+    return <Button {...restProps}>{children}</Button>;
 };
 
 Profile.MainContent = ({ children, ...restProps }) => {

@@ -3,7 +3,7 @@ import axios from "axios";
 /* Coupon management services */
 export const fetchCoupons = (setCoupons) => {
     axios
-        .get("http://localhost:8080//getCoupons")
+        .get("http://localhost:8080/getCoupons")
         .then((res) => {
             setCoupons(res.data);
         });
@@ -15,7 +15,7 @@ export const insertCoupons = (event, state, setState, refCoupon) => {
     coupons.push(state);
     console.log(coupons)
     axios
-        .post("http://localhost:8080//insertCoupons", coupons)
+        .post("http://localhost:8080/insertCoupons", coupons)
         .then((res) => {
 
         });
@@ -30,7 +30,7 @@ export const deleteCoupon = (event, couponCode) => {
     couponCodes.push(couponCode);
 
     axios
-        .post("http://localhost:8080//deleteCoupons", couponCodes)
+        .post("http://localhost:8080/deleteCoupons", couponCodes)
         .then((res) => {
 
         });

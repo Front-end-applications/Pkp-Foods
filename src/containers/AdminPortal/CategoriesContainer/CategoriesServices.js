@@ -3,7 +3,7 @@ import axios from "axios";
 /* Categories services */
 export const fetchFamilies = (setFamilies, setClassState, setBrickState) => {
     axios
-        .get("http://localhost:8080//getFamilies")
+        .get("http://localhost:8080/getFamilies")
         .then((res) => {
             setFamilies(res.data);
             setClassState(prevState => (
@@ -42,7 +42,7 @@ export const insertFamilies = (event, familyState, setFamilyState, refFamily) =>
     const families = [];
     families.push(familyState);
     axios
-        .post("http://localhost:8080//insertFamilies", families)
+        .post("http://localhost:8080/insertFamilies", families)
         .then((res) => {
 
         });
@@ -57,7 +57,7 @@ export const deleteFamilies = (event, family) => {
     families.push(family);
 
     axios
-        .post("http://localhost:8080//deleteFamilies", families)
+        .post("http://localhost:8080/deleteFamilies", families)
         .then((res) => {
 
         });
@@ -67,7 +67,7 @@ export const deleteFamilies = (event, family) => {
 
 export const fetchClasses = (setClasses) => {
     axios
-        .get("http://localhost:8080//getClasses")
+        .get("http://localhost:8080/getClasses")
         .then((res) => {
             setClasses(res.data);
         });
@@ -78,7 +78,7 @@ export const insertClasses = (event, classState, setClassState, refClass) => {
     const classes = [];
     classes.push(classState);
     axios
-        .post("http://localhost:8080//insertClasses", classes)
+        .post("http://localhost:8080/insertClasses", classes)
         .then((res) => {
 
         });
@@ -93,7 +93,7 @@ export const deleteClasses = (event, _class) => {
     classes.push(_class);
 
     axios
-        .post("http://localhost:8080//deleteClasses", classes)
+        .post("http://localhost:8080/deleteClasses", classes)
         .then((res) => {
 
         });
@@ -103,7 +103,7 @@ export const deleteClasses = (event, _class) => {
 
 export const fetchBricks = (setBricks) => {
     axios
-        .get("http://localhost:8080//getBricks")
+        .get("http://localhost:8080/getBricks")
         .then((res) => {
             setBricks(res.data);
         });
@@ -111,7 +111,7 @@ export const fetchBricks = (setBricks) => {
 
 export const fetchClassesByFamilyId = (familyId, setClassesByFamilyId, setBrickState) => {
     axios
-        .get("http://localhost:8080//getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId)
         .then((res) => {
             setClassesByFamilyId(res.data);
 
@@ -137,7 +137,7 @@ export const insertBricks = (event, brickState, setBrickState, refBrick) => {
     const bricks = [];
     bricks.push(brickState);
     axios
-        .post("http://localhost:8080//insertBricks", bricks)
+        .post("http://localhost:8080/insertBricks", bricks)
         .then((res) => {
 
         });
@@ -152,7 +152,7 @@ export const deleteBricks = (event, brick) => {
     bricks.push(brick);
 
     axios
-        .post("http://localhost:8080//deleteBricks", bricks)
+        .post("http://localhost:8080/deleteBricks", bricks)
         .then((res) => {
 
         });
@@ -162,7 +162,7 @@ export const deleteBricks = (event, brick) => {
 
 export const fetchBrands = (setBrands) => {
     axios
-        .get("http://localhost:8080//getBrands")
+        .get("http://localhost:8080/getBrands")
         .then((res) => {
             setBrands(res.data);
         });
@@ -173,7 +173,7 @@ export const insertBrands = (event, brandState, setBrandState, refBrand) => {
     const brands = [];
     brands.push(brandState);
     axios
-        .post("http://localhost:8080//insertBrands", brands)
+        .post("http://localhost:8080/insertBrands", brands)
         .then((res) => {
 
         });
@@ -188,7 +188,7 @@ export const deleteBrands = (event, brand) => {
     brands.push(brand);
 
     axios
-        .post("http://localhost:8080//deleteBrands", brands)
+        .post("http://localhost:8080/deleteBrands", brands)
         .then((res) => {
 
         });
