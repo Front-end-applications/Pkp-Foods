@@ -23,13 +23,28 @@ export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
 }
 
 export function ProtectedRoute({ user, children, ...restProps }) {
+
+    let userObj = user ? JSON.parse(user) : null;
+
     return (
         <Route
             {...restProps}
             render={({ location }) => {
 
-                if (user) {
-                    return children;
+                if (userObj) {
+                    if (userObj.roles.includes(restProps.role)) {
+                        return children;
+                    }
+                    else {
+                        return (
+                            <Redirect
+                                to={{
+                                    pathname: 'error',
+                                    state: { from: location },
+                                }}
+                            />
+                        );
+                    }
                 } else {
                     return (
                         <Redirect
@@ -40,6 +55,7 @@ export function ProtectedRoute({ user, children, ...restProps }) {
                         />
                     );
                 }
+                
             }}
         />
     )

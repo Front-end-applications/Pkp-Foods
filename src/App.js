@@ -29,7 +29,12 @@ import {
   Categories
 } from "./pages/AdminPortal";
 
+import {
+  Error
+} from "./pages/Common";
+
 import * as ROUTES from "./constants/routes";
+import * as ROLES from "./constants/UserRoles";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes"
 import { CartProvider } from "./context/shoppingCart";
 
@@ -38,7 +43,7 @@ function App() {
   console.log(user);
   return (
     <CartProvider>
-      
+
       <Router>
         <IsUserRedirect
           user={user}
@@ -64,37 +69,48 @@ function App() {
         <Route exact path={ROUTES.COLLECTION_CATEGORY} component={Products} />
         <Route exact path={ROUTES.PRODUCTS} component={ProductDetails} />
         <Route exact path="/signin" component={Authentication} />
+        <Route exact path="/error" component={Error} />
 
-        <ProtectedRoute user={user} path={ROUTES.SHOPPING_CART} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.SHOPPING_CART} exact>
           <ShoppingCart />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.CHECKOUT} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.CHECKOUT} exact>
           <Checkout />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.PAYMENT} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.PAYMENT} exact>
           <Payment />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.CUSTOMER_PROFILE} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.CUSTOMER_PROFILE} exact>
           <Profile />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.CUSTOMER_PROFILE_ADDRESS} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.CUSTOMER_PROFILE_ADDRESS} exact>
           <ProfileAddress />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.CUSTOMER_ORDERS} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.CUSTOMER_ORDERS} exact>
           <CustomerOrders />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.WISHLIST} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.WISHLIST} exact>
           <Wishlist />
         </ProtectedRoute>
-        <ProtectedRoute user={user} path={ROUTES.GIFT_CARDS} exact>
+        <ProtectedRoute user={user} role={ROLES.ROLE_USER} path={ROUTES.GIFT_CARDS} exact>
           <GiftCards />
         </ProtectedRoute>
 
-        <Route exact path={ROUTES.ADMIN_CHILD_ARTICLES} component={ChildArticles} />
-        <Route exact path={ROUTES.ADMIN_PARENT_ARTICLES} component={ParentArticles} />
-        <Route exact path={ROUTES.ADMIN_CATEGORIES} component={Categories} />
-        <Route exact path={ROUTES.ADMIN_ORDERS} component={Orders} />
-        <Route exact path={ROUTES.ADMIN_COUPONS} component={Coupons} />
+        <ProtectedRoute user={user} role={ROLES.ROLE_ADMIN} path={ROUTES.ADMIN_CHILD_ARTICLES} exact>
+          <ChildArticles />
+        </ProtectedRoute>
+        <ProtectedRoute user={user} role={ROLES.ROLE_ADMIN} path={ROUTES.ADMIN_PARENT_ARTICLES} exact>
+          <ParentArticles />
+        </ProtectedRoute>
+        <ProtectedRoute user={user} role={ROLES.ROLE_ADMIN} path={ROUTES.ADMIN_CATEGORIES} exact>
+          <Categories />
+        </ProtectedRoute>
+        <ProtectedRoute user={user} role={ROLES.ROLE_ADMIN} path={ROUTES.ADMIN_ORDERS} exact>
+          <Orders />
+        </ProtectedRoute>
+        <ProtectedRoute user={user} role={ROLES.ROLE_ADMIN} path={ROUTES.ADMIN_COUPONS} exact>
+          <Coupons />
+        </ProtectedRoute>
       </Router>
     </CartProvider>
   );
