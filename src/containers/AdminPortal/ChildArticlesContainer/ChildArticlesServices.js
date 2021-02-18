@@ -1,9 +1,10 @@
 import axios from "axios";
+import AuthHeader from "../../../helpers/AuthHeader"
 
 /* Product management services */
 export const fetchFamilies = (setFamilies, setState) => {
     axios
-        .get("http://localhost:8080/getFamilies")
+        .get("http://localhost:8080/getFamilies", { headers: AuthHeader()})
         .then((res) => {
             setFamilies(res.data);
             setState(prevState => ({
@@ -35,7 +36,7 @@ export const fetchFamilies = (setFamilies, setState) => {
 
 export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
     axios
-        .get("http://localhost:8080/getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId, { headers: AuthHeader()})
         .then((res) => {
             setClasses(res.data);
             setState(prevState => ({
@@ -65,7 +66,7 @@ export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
 
 export const fetchBricksByClassId = (classId, setBricks, setState) => {
     axios
-        .get("http://localhost:8080/getBricks?classId=" + classId)
+        .get("http://localhost:8080/getBricks?classId=" + classId, { headers: AuthHeader()})
         .then((res) => {
             setBricks(res.data);
             setState(prevState => ({
@@ -90,7 +91,7 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
 
 export const fetchTaxes = (setTaxes, setState) => {
     axios
-        .get("http://localhost:8080/getTaxes")
+        .get("http://localhost:8080/getTaxes", { headers: AuthHeader()})
         .then((res) => {
             setTaxes(res.data);
             setState(prevState => ({
@@ -102,7 +103,7 @@ export const fetchTaxes = (setTaxes, setState) => {
 
 export const fetchParentArticles = (setParentArticles) => {
     axios
-        .get("http://localhost:8080/getParentArticles")
+        .get("http://localhost:8080/getParentArticles", { headers: AuthHeader()})
         .then((res) => {
             setParentArticles(res.data);
         });
@@ -110,7 +111,7 @@ export const fetchParentArticles = (setParentArticles) => {
 
 export const fetchParentArticlesByBrickId = (brickId, setParentArticles, setState) => {
     axios
-        .get("http://localhost:8080/getParentArticles?brickId=" + brickId)
+        .get("http://localhost:8080/getParentArticles?brickId=" + brickId, { headers: AuthHeader()})
         .then((res) => {
             setParentArticles(res.data);
             (res.data.length > 0) && setState(prevState => ({
@@ -130,7 +131,7 @@ export const fetchParentArticlesByBrickId = (brickId, setParentArticles, setStat
 
 export const fetchChildArticles = (setChildArticles) => {
     axios
-        .get("http://localhost:8080/getChildArticles")
+        .get("http://localhost:8080/getChildArticles", { headers: AuthHeader()})
         .then((res) => {
             setChildArticles(res.data);
         });
@@ -138,11 +139,11 @@ export const fetchChildArticles = (setChildArticles) => {
 
 export const insertChildArticles = (event, state, setState, refProduct) => {
     event.preventDefault();
-    console.log("ChildArticlesServices: insertChildArticles");
+    console.log("ChildArticlesServices: insertChildArticles", { headers: AuthHeader()});
     const products = [];
     products.push(state);
     axios
-        .post("http://localhost:8080/insertChildArticles", products)
+        .post("http://localhost:8080/insertChildArticles", products, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -157,7 +158,7 @@ export const deleteChildArticle = (event, product) => {
     products.push(product);
 
     axios
-        .post("http://localhost:8080/deleteChildArticles", products)
+        .post("http://localhost:8080/deleteChildArticles", products, { headers: AuthHeader()})
         .then((res) => {
 
         });

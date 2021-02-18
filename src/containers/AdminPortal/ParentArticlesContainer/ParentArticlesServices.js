@@ -1,9 +1,10 @@
 import axios from "axios";
+import AuthHeader from "../../../helpers/AuthHeader"
 
 /* Product management services */
 export const fetchFamilies = (setFamilies, setState) => {
     axios
-        .get("http://localhost:8080/getFamilies")
+        .get("http://localhost:8080/getFamilies", { headers: AuthHeader()})
         .then((res) => {
             setFamilies(res.data);
             setState(prevState => ({
@@ -30,7 +31,7 @@ export const fetchFamilies = (setFamilies, setState) => {
 
 export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
     axios
-        .get("http://localhost:8080/getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId, { headers: AuthHeader()})
         .then((res) => {
             setClasses(res.data);
             setState(prevState => ({
@@ -55,7 +56,7 @@ export const fetchClassesByFamilyId = (familyId, setClasses, setState) => {
 
 export const fetchBricksByClassId = (classId, setBricks, setState) => {
     axios
-        .get("http://localhost:8080/getBricks?classId=" + classId)
+        .get("http://localhost:8080/getBricks?classId=" + classId, { headers: AuthHeader()})
         .then((res) => {
             setBricks(res.data);
             setState(prevState => ({
@@ -75,7 +76,7 @@ export const fetchBricksByClassId = (classId, setBricks, setState) => {
 
 export const fetchBrands = (setBrands, setState) => {
     axios
-        .get("http://localhost:8080/getBrands")
+        .get("http://localhost:8080/getBrands", { headers: AuthHeader()})
         .then((res) => {
             setBrands(res.data);
             setState(prevState => ({
@@ -87,7 +88,7 @@ export const fetchBrands = (setBrands, setState) => {
 
 export const fetchParentArticles = (setParentArticles) => {
     axios
-        .get("http://localhost:8080/getParentArticles")
+        .get("http://localhost:8080/getParentArticles", { headers: AuthHeader()})
         .then((res) => {
             setParentArticles(res.data);
         });
@@ -98,7 +99,7 @@ export const insertParentArticles = (event, state, setState, refParentArticle) =
     const parentArticles = [];
     parentArticles.push(state);
     axios
-        .post("http://localhost:8080/insertParentArticles", parentArticles)
+        .post("http://localhost:8080/insertParentArticles", parentArticles, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -118,7 +119,7 @@ export const deleteParentArticle = (event, parentArticle) => {
     parentArticles.push(parentArticle);
 
     axios
-        .post("http://localhost:8080/deleteParentArticles", parentArticles)
+        .post("http://localhost:8080/deleteParentArticles", parentArticles, { headers: AuthHeader()})
         .then((res) => {
 
         });

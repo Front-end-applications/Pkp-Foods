@@ -1,9 +1,10 @@
 import axios from "axios";
+import AuthHeader from "../../../helpers/AuthHeader"
 
 /* Categories services */
 export const fetchFamilies = (setFamilies, setClassState, setBrickState) => {
     axios
-        .get("http://localhost:8080/getFamilies")
+        .get("http://localhost:8080/getFamilies", { headers: AuthHeader()})
         .then((res) => {
             setFamilies(res.data);
             setClassState(prevState => (
@@ -42,7 +43,7 @@ export const insertFamilies = (event, familyState, setFamilyState, refFamily) =>
     const families = [];
     families.push(familyState);
     axios
-        .post("http://localhost:8080/insertFamilies", families)
+        .post("http://localhost:8080/insertFamilies", families, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -57,7 +58,7 @@ export const deleteFamilies = (event, family) => {
     families.push(family);
 
     axios
-        .post("http://localhost:8080/deleteFamilies", families)
+        .post("http://localhost:8080/deleteFamilies", families, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -67,7 +68,7 @@ export const deleteFamilies = (event, family) => {
 
 export const fetchClasses = (setClasses) => {
     axios
-        .get("http://localhost:8080/getClasses")
+        .get("http://localhost:8080/getClasses", { headers: AuthHeader()})
         .then((res) => {
             setClasses(res.data);
         });
@@ -78,7 +79,7 @@ export const insertClasses = (event, classState, setClassState, refClass) => {
     const classes = [];
     classes.push(classState);
     axios
-        .post("http://localhost:8080/insertClasses", classes)
+        .post("http://localhost:8080/insertClasses", classes, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -93,7 +94,7 @@ export const deleteClasses = (event, _class) => {
     classes.push(_class);
 
     axios
-        .post("http://localhost:8080/deleteClasses", classes)
+        .post("http://localhost:8080/deleteClasses", classes, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -103,7 +104,7 @@ export const deleteClasses = (event, _class) => {
 
 export const fetchBricks = (setBricks) => {
     axios
-        .get("http://localhost:8080/getBricks")
+        .get("http://localhost:8080/getBricks", { headers: AuthHeader()})
         .then((res) => {
             setBricks(res.data);
         });
@@ -111,7 +112,7 @@ export const fetchBricks = (setBricks) => {
 
 export const fetchClassesByFamilyId = (familyId, setClassesByFamilyId, setBrickState) => {
     axios
-        .get("http://localhost:8080/getClasses?familyId=" + familyId)
+        .get("http://localhost:8080/getClasses?familyId=" + familyId, { headers: AuthHeader()})
         .then((res) => {
             setClassesByFamilyId(res.data);
 
@@ -137,7 +138,7 @@ export const insertBricks = (event, brickState, setBrickState, refBrick) => {
     const bricks = [];
     bricks.push(brickState);
     axios
-        .post("http://localhost:8080/insertBricks", bricks)
+        .post("http://localhost:8080/insertBricks", bricks, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -152,7 +153,7 @@ export const deleteBricks = (event, brick) => {
     bricks.push(brick);
 
     axios
-        .post("http://localhost:8080/deleteBricks", bricks)
+        .post("http://localhost:8080/deleteBricks", bricks, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -162,7 +163,7 @@ export const deleteBricks = (event, brick) => {
 
 export const fetchBrands = (setBrands) => {
     axios
-        .get("http://localhost:8080/getBrands")
+        .get("http://localhost:8080/getBrands", { headers: AuthHeader()})
         .then((res) => {
             setBrands(res.data);
         });
@@ -173,7 +174,7 @@ export const insertBrands = (event, brandState, setBrandState, refBrand) => {
     const brands = [];
     brands.push(brandState);
     axios
-        .post("http://localhost:8080/insertBrands", brands)
+        .post("http://localhost:8080/insertBrands", brands, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -188,7 +189,7 @@ export const deleteBrands = (event, brand) => {
     brands.push(brand);
 
     axios
-        .post("http://localhost:8080/deleteBrands", brands)
+        .post("http://localhost:8080/deleteBrands", brands, { headers: AuthHeader()})
         .then((res) => {
 
         });

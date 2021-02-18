@@ -1,9 +1,10 @@
 import axios from "axios";
+import AuthHeader from "../../../helpers/AuthHeader"
 
 /* Coupon management services */
 export const fetchCoupons = (setCoupons) => {
     axios
-        .get("http://localhost:8080/getCoupons")
+        .get("http://localhost:8080/getCoupons", { headers: AuthHeader()})
         .then((res) => {
             setCoupons(res.data);
         });
@@ -15,7 +16,7 @@ export const insertCoupons = (event, state, setState, refCoupon) => {
     coupons.push(state);
     console.log(coupons)
     axios
-        .post("http://localhost:8080/insertCoupons", coupons)
+        .post("http://localhost:8080/insertCoupons", coupons, { headers: AuthHeader()})
         .then((res) => {
 
         });
@@ -30,7 +31,7 @@ export const deleteCoupon = (event, couponCode) => {
     couponCodes.push(couponCode);
 
     axios
-        .post("http://localhost:8080/deleteCoupons", couponCodes)
+        .post("http://localhost:8080/deleteCoupons", couponCodes, { headers: AuthHeader()})
         .then((res) => {
 
         });
